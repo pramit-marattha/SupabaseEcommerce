@@ -16,7 +16,7 @@ const Card = ({
 }) => (
   <Link href={`/products/${id}`}>
     <a className="block w-full">
-      <div className="relative bg-gray-200 rounded-lg shadow overflow-hidden aspect-video">
+      <div className="relative bg-orange-200 rounded-lg shadow overflow-hidden aspect-video">
         {image ? (
           <Image
             src={image}
@@ -38,7 +38,7 @@ const Card = ({
         >
           <HeartIcon
             className={`w-7 h-7 drop-shadow-lg transition ${
-              favorite ? "text-red-500" : "text-white"
+              favorite ? "text-rose-500" : "text-white"
             }`}
           />
         </button>
@@ -55,13 +55,13 @@ const Card = ({
           <span className="text-gray-500">/per items </span>
         </span>
       </div>
-      <ol className="inline-flex items-center space-x-1 text-gray-500 bg-teal-100 rounded-md py-1 px-1">
+      <ol className="inline-flex items-center space-x-1 text-xs text-gray-500 bg-teal-100 rounded-md py-1 px-6">
         <li>
           <span>{authenticity ?? 0}% authentic</span>
           <span aria-hidden="true"> · </span>
         </li>
         <li>
-          <span>{returnPolicy ?? 0} returnPolicy</span>
+          <span>{returnPolicy ?? 0} month return policy</span>
           <span aria-hidden="true"> · </span>
         </li>
         <li>
