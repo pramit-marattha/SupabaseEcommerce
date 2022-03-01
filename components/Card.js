@@ -55,9 +55,9 @@ const Card = ({
           <span className="text-gray-500">/per items </span>
         </span>
       </div>
-      <ol className="inline-flex items-center space-x-1 text-gray-500">
+      <ol className="inline-flex items-center space-x-1 text-gray-500 bg-teal-100 rounded-md py-1 px-1">
         <li>
-          <span>{authenticity ?? 0} authenticity</span>
+          <span>{authenticity ?? 0}% authentic</span>
           <span aria-hidden="true"> · </span>
         </li>
         <li>
@@ -65,7 +65,7 @@ const Card = ({
           <span aria-hidden="true"> · </span>
         </li>
         <li>
-          <span>{warranty ?? 0} warranty</span>
+          <span>{warranty ?? 0} years warranty</span>
         </li>
       </ol>
     </a>

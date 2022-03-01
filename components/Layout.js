@@ -69,7 +69,7 @@ const Layout = ({ children = null }) => {
                 <a className="flex items-center space-x-1">
                   <ShoppingCartIcon className="shrink-0 w-10 h-10 text-teal-500" />
                   <span className="text-2xl font-semibold tracking-wide text-orange-500">
-                    supaa<span className="text-teal-500 text-4xl">Shop</span>
+                    supaa<span className="text-teal-500 text-4xl">Shopp</span>
                   </span>
                 </a>
               </Link>
