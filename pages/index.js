@@ -1,19 +1,17 @@
-import Layout from '@/components/Layout';
-import Grid from '@/components/Grid';
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
 
-import homes from 'data.json';
+import products from "data.json";
 
 export default function Home() {
   return (
     <Layout>
       <h1 className="text-xl font-medium text-gray-800">
-        Top-rated places to stay
+        WELCOMEE! to <span className="text-3xl text-teal-500">Supaa Shop</span>
       </h1>
-      <p className="text-gray-500">
-        Explore some of the best places in the world
-      </p>
+      <p className="text-gray-500">Shop as much as you wanttt!!</p>
       <div className="mt-8">
-        <Grid homes={homes} />
+        <Grid products={products} />
       </div>
     </Layout>
   );
