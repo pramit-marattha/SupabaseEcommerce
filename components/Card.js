@@ -1,15 +1,15 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import PropTypes from 'prop-types';
-import { HeartIcon } from '@heroicons/react/solid';
+import Link from "next/link";
+import Image from "next/image";
+import PropTypes from "prop-types";
+import { HeartIcon } from "@heroicons/react/solid";
 
 const Card = ({
-  id = '',
-  image = '',
-  title = '',
-  guests = 0,
-  beds = 0,
-  baths = 0,
+  id = "",
+  image = "",
+  title = "",
+  authenticity = 0,
+  returnPolicy = 0,
+  warranty = 0,
   price = 0,
   favorite = false,
   onClickFavorite = () => null,
@@ -28,9 +28,9 @@ const Card = ({
         ) : null}
         <button
           type="button"
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault();
-            if (typeof onClickFavorite === 'function') {
+            if (typeof onClickFavorite === "function") {
               onClickFavorite(id);
             }
           }}
@@ -38,34 +38,34 @@ const Card = ({
         >
           <HeartIcon
             className={`w-7 h-7 drop-shadow-lg transition ${
-              favorite ? 'text-red-500' : 'text-white'
+              favorite ? "text-red-500" : "text-white"
             }`}
           />
         </button>
       </div>
       <div className="mt-2 w-full inline-flex justify-between space-x-4">
         <span className="truncate text-gray-700 font-semibold">
-          {title ?? ''}
+          {title ?? ""}
         </span>
         <span className="shrink-0">
-          {new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(price ?? 0)}{' '}
-          <span className="text-gray-500">/night</span>
+          {new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(price ?? 0)}{" "}
+          <span className="text-gray-500">/per items </span>
         </span>
       </div>
       <ol className="inline-flex items-center space-x-1 text-gray-500">
         <li>
-          <span>{guests ?? 0} guests</span>
+          <span>{authenticity ?? 0} authenticity</span>
           <span aria-hidden="true"> · </span>
         </li>
         <li>
-          <span>{beds ?? 0} beds</span>
+          <span>{returnPolicy ?? 0} returnPolicy</span>
           <span aria-hidden="true"> · </span>
         </li>
         <li>
-          <span>{baths ?? 0} baths</span>
+          <span>{warranty ?? 0} warranty</span>
         </li>
       </ol>
     </a>
@@ -77,9 +77,9 @@ Card.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  guests: PropTypes.number,
-  beds: PropTypes.number,
-  baths: PropTypes.number,
+  authenticity: PropTypes.number,
+  returnPolicy: PropTypes.number,
+  warranty: PropTypes.number,
   price: PropTypes.number,
   favorite: PropTypes.bool,
   onClickFavorite: PropTypes.func,

@@ -44,7 +44,7 @@ const Confirm = ({ show = false, email = '' }) => (
           <div className="overflow-hidden transition-all transform">
             <h3 className="text-center text-lg font-medium leading-6">
               <div className="flex flex-col justify-center items-center space-y-4">
-                <MailOpenIcon className="w-12 h-12 shrink-0 text-rose-500" />
+                <MailOpenIcon className="w-12 h-12 shrink-0 text-teal-500" />
               </div>
               <p className="text-2xl font-semibold mt-2">Confirm your email</p>
             </h3>
@@ -151,9 +151,9 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                   <div className="flex justify-center">
                     <Link href="/">
                       <a className="flex items-center space-x-1">
-                        <SparklesIcon className="shrink-0 w-8 h-8 text-rose-500" />
+                        <SparklesIcon className="shrink-0 w-8 h-8 text-teal-500" />
                         <span className="text-xl font-semibold tracking-wide">
-                          Supa<span className="text-rose-500">Vacation</span>
+                          Supa<span className="text-teal-500">Vacation</span>
                         </span>
                       </a>
                     </Link>
@@ -209,7 +209,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                           <button
                             type="submit"
                             disabled={disabled || !isValid}
-                            className="mt-6 w-full bg-rose-600 text-white py-2 px-8 rounded-md focus:outline-none focus:ring-4 focus:ring-rose-600 focus:ring-opacity-50 hover:bg-rose-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-rose-600"
+                            className="mt-6 w-full bg-teal-600 text-white py-2 px-8 rounded-md focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
                           >
                             {isSubmitting
                               ? 'Loading...'
@@ -227,7 +227,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                     setShowSignIn(false);
                                     resetForm();
                                   }}
-                                  className="underline underline-offset-1 font-semibold text-rose-500 hover:text-rose-600 disabled:hover:text-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="underline underline-offset-1 font-semibold text-teal-500 hover:text-teal-600 disabled:hover:text-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                   Sign up
                                 </button>
@@ -243,7 +243,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                     setShowSignIn(true);
                                     resetForm();
                                   }}
-                                  className="underline underline-offset-1 font-semibold text-rose-500 hover:text-rose-600 disabled:hover:text-rose-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                                  className="underline underline-offset-1 font-semibold text-teal-500 hover:text-teal-600 disabled:hover:text-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                   Log in
                                 </button>
