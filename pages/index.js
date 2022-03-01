@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import Grid from "@/components/Grid";
 
-import homes from "data.json";
+import products from "data.json";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       </h1>
       <p className="text-gray-500">Shop as much as you wanttt!!</p>
       <div className="mt-8">
-        <Grid homes={homes} />
+        <Grid products={products} />
       </div>
     </Layout>
   );
