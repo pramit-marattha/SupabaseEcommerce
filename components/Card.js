@@ -14,7 +14,7 @@ const Card = ({
   favorite = false,
   onClickFavorite = () => null,
 }) => (
-  <Link href={`/homes/${id}`}>
+  <Link href={`/products/${id}`}>
     <a className="block w-full">
       <div className="relative bg-gray-200 rounded-lg shadow overflow-hidden aspect-video">
         {image ? (
