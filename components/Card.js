@@ -7,6 +7,7 @@ const Card = ({
   id = "",
   image = "",
   title = "",
+  status = "",
   authenticity = 0,
   returnPolicy = 0,
   warranty = 0,
@@ -43,6 +44,9 @@ const Card = ({
               }`}
             />
           </button>
+          <div class="absolute top-2 left-2 badge badge-accent">
+            {status ?? ""}
+          </div>
         </div>
         <div className="card-body">
           <h2 className="card-title">
@@ -61,7 +65,7 @@ const Card = ({
             </div>
           </h2>
           <p>
-            <div class="card-actions justify-center">
+            <div class="card-actions justify-end">
               <div class="badge badge-outline">
                 {authenticity ?? 0}% authentic
               </div>
@@ -73,7 +77,7 @@ const Card = ({
               </div>
             </div>
           </p>
-          <div className="card-actions justify-center p-5">
+          <div className="card-actions justify-center p-6">
             <button className="btn btn-info">Buy Now</button>
           </div>
         </div>
