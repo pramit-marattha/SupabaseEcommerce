@@ -53,30 +53,27 @@ const Layout = ({ children = null }) => {
   return (
     <>
       <Head>
-        <title>supaaShop | Modern way to shop</title>
-        <meta
-          name="title"
-          content="Learn how to Build a Fullstack App with Next.js, PlanetScale & Prisma | The Modern Dev"
-        />
+        <title>SupaaShop | A new way to shop!</title>
+        <meta name="title" content="SupaaShopp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col font-['Poppins']">
         <header className="h-28 w-full shadow-lg">
           <div className="h-full container mx-auto">
             <div className="h-full px-5 flex justify-between items-center space-x-5">
               <Link href="/">
                 <a className="flex items-center space-x-1">
-                  <ShoppingCartIcon className="shrink-0 w-10 h-10 text-teal-500" />
-                  <span className="text-2xl font-semibold tracking-wide text-orange-500">
-                    supaa<span className="text-teal-500 text-4xl">Shopp</span>
+                  <ShoppingCartIcon className="shrink-0 w-10 h-10 text-primary" />
+                  <span className="text-2xl font-semibold tracking-wide text-primary">
+                    supaa<span className="text-success text-4xl">Shopp</span>
                   </span>
                 </a>
               </Link>
               <div className="flex items-center space-x-4">
                 <Link href="/create">
-                  <a className="ml-4 px-4 py-5 rounded-md bg-orange-600 hover:bg-orange-500 focus:outline-none focus:ring-4 focus:ring-teal-500 focus:ring-opacity-50 text-white transition">
-                    + Add your shop
+                  <a className="ml-4 px-4 py-5 rounded-md bg-accent hover:bg-info focus:outline-none focus:ring-4 focus:ring-primaryfocus:ring-opacity-50 text-white font-semibold transition">
+                    Register shop !
                   </a>
                 </Link>
                 {isLoadingUser ? (
@@ -163,9 +160,9 @@ const Layout = ({ children = null }) => {
                   <button
                     type="button"
                     onClick={openModal}
-                    className="ml-4 px-4 py-5 rounded-md bg-teal-600 hover:bg-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500 focus:ring-opacity-50 text-white transition"
+                    className="ml-4 px-4 py-5 rounded-md bg-info hover:bg-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-white font-extrabold transition"
                   >
-                    Sign in
+                    Login
                   </button>
                 )}
               </div>
