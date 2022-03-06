@@ -1,22 +1,27 @@
-import { Fragment, useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import PropTypes from 'prop-types';
-import * as Yup from 'yup';
-import { toast } from 'react-hot-toast';
-import { Formik, Form } from 'formik';
-import { Dialog, Transition } from '@headlessui/react';
-import { SparklesIcon, MailOpenIcon, XIcon } from '@heroicons/react/outline';
-import Input from './Input';
+import { Fragment, useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import PropTypes from "prop-types";
+import * as Yup from "yup";
+import { toast } from "react-hot-toast";
+import { Formik, Form } from "formik";
+import { Dialog, Transition } from "@headlessui/react";
+import {
+  SparklesIcon,
+  MailOpenIcon,
+  XIcon,
+  ShoppingCartIcon,
+} from "@heroicons/react/outline";
+import Input from "./Input";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
     .trim()
-    .email('Invalid email')
-    .required('This field is required'),
+    .email("Invalid email")
+    .required("This field is required"),
 });
 
-const Confirm = ({ show = false, email = '' }) => (
+const Confirm = ({ show = false, email = "" }) => (
   <Transition appear show={show} as={Fragment}>
     <div className="fixed inset-0 z-50">
       <Transition.Child
@@ -50,7 +55,7 @@ const Confirm = ({ show = false, email = '' }) => (
             </h3>
 
             <p className="text-lg text-center mt-4">
-              We emailed a magic link to <strong>{email ?? ''}</strong>.
+              We emailed a magic link to <strong>{email ?? ""}</strong>.
               <br />
               Check your inbox and click the link in the email to login or sign
               up.
@@ -76,7 +81,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
   };
 
   const closeModal = () => {
-    if (typeof onClose === 'function') {
+    if (typeof onClose === "function") {
       onClose();
     }
   };
@@ -151,9 +156,9 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                   <div className="flex justify-center">
                     <Link href="/">
                       <a className="flex items-center space-x-1">
-                        <SparklesIcon className="shrink-0 w-8 h-8 text-teal-500" />
+                        <ShoppingCartIcon className="shrink-0 w-10 h-10 text-teal-500" />
                         <span className="text-xl font-semibold tracking-wide">
-                          Supa<span className="text-teal-500">Vacation</span>
+                          Supaa<span className="text-teal-500">Shopp</span>
                         </span>
                       </a>
                     </Link>
@@ -163,13 +168,13 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                     as="h3"
                     className="mt-6 font-bold text-lg sm:text-2xl text-center"
                   >
-                    {showSignIn ? 'Welcome back!' : 'Create your account'}
+                    {showSignIn ? "Welcome back!" : "Create your account"}
                   </Dialog.Title>
 
                   {!showSignIn ? (
                     <Dialog.Description className="mt-2 text-gray-500 text-base text-center">
-                      Please create an account to list your homes and bookmark
-                      your favorite ones.
+                      Please create an account to buy the products listed on
+                      this site.
                     </Dialog.Description>
                   ) : null}
 
@@ -186,12 +191,12 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                         width={32}
                         height={32}
                       />
-                      <span>Sign {showSignIn ? 'in' : 'up'} with Google</span>
+                      <span>Sign {showSignIn ? "in" : "up"} with Google</span>
                     </button>
 
                     {/* Sign with email */}
                     <Formik
-                      initialValues={{ email: '' }}
+                      initialValues={{ email: "" }}
                       validationSchema={SignInSchema}
                       validateOnBlur={false}
                       onSubmit={signInWithEmail}
@@ -201,7 +206,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                           <Input
                             name="email"
                             type="email"
-                            placeholder="elon@spacex.com"
+                            placeholder="suppaashop@email.com"
                             disabled={disabled}
                             spellCheck={false}
                           />
@@ -212,14 +217,14 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                             className="mt-6 w-full bg-teal-600 text-white py-2 px-8 rounded-md focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
                           >
                             {isSubmitting
-                              ? 'Loading...'
-                              : `Sign ${showSignIn ? 'in' : 'up'}`}
+                              ? "Loading..."
+                              : `Sign ${showSignIn ? "in" : "up"}`}
                           </button>
 
                           <p className="mt-2 text-center text-sm text-gray-500">
                             {showSignIn ? (
                               <>
-                                Don&apos;t have an account yet?{' '}
+                                Don&apos;t have an account?{" "}
                                 <button
                                   type="button"
                                   disabled={disabled}
@@ -229,13 +234,13 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                   }}
                                   className="underline underline-offset-1 font-semibold text-teal-500 hover:text-teal-600 disabled:hover:text-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                  Sign up
+                                  Register
                                 </button>
                                 .
                               </>
                             ) : (
                               <>
-                                Already have an account?{' '}
+                                Already have an account?{" "}
                                 <button
                                   type="button"
                                   disabled={disabled}
@@ -245,7 +250,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                   }}
                                   className="underline underline-offset-1 font-semibold text-teal-500 hover:text-teal-600 disabled:hover:text-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                  Log in
+                                  Sign in
                                 </button>
                                 .
                               </>
@@ -254,7 +259,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
 
                           <Confirm
                             show={showConfirm}
-                            email={values?.email ?? ''}
+                            email={values?.email ?? ""}
                           />
                         </Form>
                       )}

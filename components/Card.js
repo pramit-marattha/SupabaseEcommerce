@@ -7,6 +7,7 @@ const Card = ({
   id = "",
   image = "",
   title = "",
+  status = "",
   authenticity = 0,
   returnPolicy = 0,
   warranty = 0,
@@ -15,59 +16,72 @@ const Card = ({
   onClickFavorite = () => null,
 }) => (
   <Link href={`/products/${id}`}>
-    <a className="block w-full">
-      <div className="relative bg-gray-200 rounded-lg shadow overflow-hidden aspect-video">
-        {image ? (
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-            className="hover:opacity-80 transition"
-          />
-        ) : null}
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            if (typeof onClickFavorite === "function") {
-              onClickFavorite(id);
-            }
-          }}
-          className="absolute top-2 right-2"
-        >
-          <HeartIcon
-            className={`w-7 h-7 drop-shadow-lg transition ${
-              favorite ? "text-red-500" : "text-white"
-            }`}
-          />
-        </button>
+    <a className="block w-full p-5">
+      <div className="card card-compact w-full bg-neutral shadow-xl">
+        <div className="relative bg-success rounded-lg shadow overflow-hidden aspect-video">
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+              className="hover:opacity-80 transition"
+            />
+          ) : null}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              if (typeof onClickFavorite === "function") {
+                onClickFavorite(id);
+              }
+            }}
+            className="absolute top-2 right-2"
+          >
+            <HeartIcon
+              className={`w-7 h-7 drop-shadow-lg transition ${
+                favorite ? "text-rose-500" : "text-white"
+              }`}
+            />
+          </button>
+          <div class="absolute top-2 left-2 badge badge-warning">
+            {status ?? ""}
+          </div>
+        </div>
+        <div className="card-body">
+          <h2 className="card-title">
+            {" "}
+            <div className="mt-2 w-full inline-flex justify-between space-x-4">
+              <span className="truncate text-success font-semibold">
+                {title ?? ""}
+              </span>
+              <span className="shrink-0 text-info">
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(price ?? 0)}{" "}
+                <span className="text-white-500"> /pcs </span>
+              </span>
+            </div>
+          </h2>
+          <p>
+            <div class="card-actions justify-center pt-2">
+              <div class="badge badge-outline">
+                {authenticity ?? 0}% authentic
+              </div>
+              <div class="badge badge-outline">
+                {returnPolicy ?? 0} month return policy
+              </div>
+              <div class="badge badge-outline">
+                {warranty ?? 0} years warranty
+              </div>
+            </div>
+          </p>
+        </div>
+        <div className="card-actions justify-center p-6">
+          <button className="btn btn-info">Buy Now</button>
+        </div>
       </div>
-      <div className="mt-2 w-full inline-flex justify-between space-x-4">
-        <span className="truncate text-gray-700 font-semibold">
-          {title ?? ""}
-        </span>
-        <span className="shrink-0">
-          {new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-          }).format(price ?? 0)}{" "}
-          <span className="text-gray-500">/per items </span>
-        </span>
-      </div>
-      <ol className="inline-flex items-center space-x-1 text-gray-500">
-        <li>
-          <span>{authenticity ?? 0} authenticity</span>
-          <span aria-hidden="true"> · </span>
-        </li>
-        <li>
-          <span>{returnPolicy ?? 0} returnPolicy</span>
-          <span aria-hidden="true"> · </span>
-        </li>
-        <li>
-          <span>{warranty ?? 0} warranty</span>
-        </li>
-      </ol>
     </a>
   </Link>
 );
