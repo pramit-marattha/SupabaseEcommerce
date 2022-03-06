@@ -16,8 +16,8 @@ const Card = ({
 }) => (
   <Link href={`/products/${id}`}>
     <a className="block w-full p-5">
-      <div className="card card-compact w-96 bg-base-100 shadow-xl p-3">
-        <div className="relative bg-neutral rounded-lg shadow overflow-hidden aspect-video">
+      <div className="card card-compact w-full bg-neutral shadow-xl">
+        <div className="relative bg-success rounded-lg shadow overflow-hidden aspect-video">
           {image ? (
             <Image
               src={image}
@@ -56,27 +56,25 @@ const Card = ({
                   style: "currency",
                   currency: "USD",
                 }).format(price ?? 0)}{" "}
-                <span className="text-white-500">/per items </span>
+                <span className="text-white-500">/pcs </span>
               </span>
             </div>
           </h2>
           <p>
-            <ol className="inline-flex items-center space-x-1 text-xs text-white-200 rounded-md py-4">
-              <li>
-                <span>{authenticity ?? 0}% authentic</span>
-                <span aria-hidden="true"> · </span>
-              </li>
-              <li>
-                <span>{returnPolicy ?? 0} month return policy</span>
-                <span aria-hidden="true"> · </span>
-              </li>
-              <li>
-                <span>{warranty ?? 0} years warranty</span>
-              </li>
-            </ol>
+            <div class="card-actions justify-center">
+              <div class="badge badge-outline">
+                {authenticity ?? 0}% authentic
+              </div>
+              <div class="badge badge-outline">
+                {returnPolicy ?? 0} month return policy
+              </div>
+              <div class="badge badge-outline">
+                {warranty ?? 0} years warranty
+              </div>
+            </div>
           </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-success">Buy Now</button>
+          <div className="card-actions justify-center p-5">
+            <button className="btn btn-info">Buy Now</button>
           </div>
         </div>
       </div>
