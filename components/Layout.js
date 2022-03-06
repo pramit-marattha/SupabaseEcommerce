@@ -58,7 +58,7 @@ const Layout = ({ children = null }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen flex flex-col font-['Poppins']">
+      <div className="min-h-screen flex flex-col font-['Poppins'] bg-[linear-gradient(90deg, #161122 21px, transparent 1%) center, linear-gradient(#161122 21px, transparent 1%) center, #a799cc]">
         <header className="h-28 w-full shadow-lg">
           <div className="h-full container mx-auto">
             <div className="h-full px-5 flex justify-between items-center space-x-5">

@@ -16,12 +16,18 @@ module.exports = {
           success: "#2ACFB7",
           warning: "#DDAE03",
           error: "#E87C69",
+          "holo-100":
+            "radial-gradient(hsla((220 13% 69%)/.2) 0.5px,hsla((220 17% 17%)/1) 0.5px)",
         },
       },
     ],
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
     },
+    backgroundImage: {
+      'hero-pattern': "url('/img/hero-pattern.svg')",
+      'footer-texture': "url('/img/footer-texture.png')",
+    }
   },
   plugins: [require("@tailwindcss/forms"), require("daisyui")],
 };

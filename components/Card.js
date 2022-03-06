@@ -44,7 +44,7 @@ const Card = ({
               }`}
             />
           </button>
-          <div class="absolute top-2 left-2 badge badge-accent">
+          <div class="absolute top-2 left-2 badge badge-warning">
             {status ?? ""}
           </div>
         </div>
@@ -52,20 +52,20 @@ const Card = ({
           <h2 className="card-title">
             {" "}
             <div className="mt-2 w-full inline-flex justify-between space-x-4">
-              <span className="truncate text-accent font-semibold">
+              <span className="truncate text-success font-semibold">
                 {title ?? ""}
               </span>
-              <span className="shrink-0">
+              <span className="shrink-0 text-info">
                 {new Intl.NumberFormat("en-US", {
                   style: "currency",
                   currency: "USD",
                 }).format(price ?? 0)}{" "}
-                <span className="text-white-500">/pcs </span>
+                <span className="text-white-500"> /pcs </span>
               </span>
             </div>
           </h2>
           <p>
-            <div class="card-actions justify-end">
+            <div class="card-actions justify-center pt-2">
               <div class="badge badge-outline">
                 {authenticity ?? 0}% authentic
               </div>
@@ -77,9 +77,9 @@ const Card = ({
               </div>
             </div>
           </p>
-          <div className="card-actions justify-center p-6">
-            <button className="btn btn-info">Buy Now</button>
-          </div>
+        </div>
+        <div className="card-actions justify-center p-6">
+          <button className="btn btn-info">Buy Now</button>
         </div>
       </div>
     </a>
