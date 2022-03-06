@@ -16,8 +16,9 @@ model Product {
   image       String?
   title       String
   description String
+  status      String
   price       Float
-  authenticity      Int
+  authenticity        Int
   returnPolicy        Int
   warranty       Int
   createdAt   DateTime @default(now())
