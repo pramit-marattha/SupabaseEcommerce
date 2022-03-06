@@ -66,7 +66,8 @@ const Layout = ({ children = null }) => {
                 <a className="flex items-center space-x-1">
                   <ShoppingCartIcon className="shrink-0 w-10 h-10 text-primary" />
                   <span className="text-2xl font-semibold tracking-wide text-primary">
-                    supaa<span className="text-success text-4xl">Shopp</span>
+                    <span className="text-3xl text-success">S</span>upaa
+                    <span className="text-3xl text-success">S</span>hopp
                   </span>
                 </a>
               </Link>
