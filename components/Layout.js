@@ -64,16 +64,20 @@ const Layout = ({ children = null }) => {
             <div className="h-full px-5 flex justify-between items-center space-x-5">
               <Link href="/">
                 <a className="flex items-center space-x-1">
-                  <ShoppingCartIcon className="shrink-0 w-10 h-10 text-primary" />
-                  <span className="text-2xl font-semibold tracking-wide text-primary">
-                    <span className="text-3xl text-success">S</span>upaa
-                    <span className="text-3xl text-success">S</span>hopp
+                  <img
+                    className="shrink-0 w-24 h-24 text-primary"
+                    src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png"
+                    alt="Logo"
+                  />
+                  <span className="text-2xl font-semibold tracking-wide text-white">
+                    <span className="text-3xl text-success">S</span>upabase
+                    <span className="text-3xl text-success">E</span>commerce
                   </span>
                 </a>
               </Link>
               <div className="flex items-center space-x-4">
                 <Link href="/create">
-                  <a className="ml-4 px-4 py-5 rounded-md bg-accent hover:bg-info focus:outline-none focus:ring-4 focus:ring-primaryfocus:ring-opacity-50 text-white font-semibold transition">
+                  <a className="ml-4 px-4 py-5 rounded-md bg-info text-primary hover:bg-primary hover:text-info focus:outline-none focus:ring-4 focus:ring-primaryfocus:ring-opacity-50  font-semibold transition">
                     Register shop !
                   </a>
                 </Link>
@@ -161,7 +165,7 @@ const Layout = ({ children = null }) => {
                   <button
                     type="button"
                     onClick={openModal}
-                    className="ml-4 px-4 py-5 rounded-md bg-info hover:bg-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-white font-extrabold transition"
+                    className="ml-4 px-4 py-5 rounded-md bg-info hover:bg-primary focus:outline-none focus:ring-4 focus:ring-primary focus:ring-opacity-50 text-primary hover:text-info font-extrabold transition"
                   >
                     Login
                   </button>
