@@ -12,7 +12,7 @@ This article tutorial covers many topics and technical concepts necessary to bui
 
 Let's start with the react portion and build our application. The first step is to install Node.js if it isn't already on your computer. So, go to the official Node.js website and download the most recent version. Node js is required to use the node package manager, abbreviated as npm. Now launch your preferred code editor and navigate to the folder. For this article tutorial, we'll be using the VScode code editor.
 
-### Cloning the project
+### Setting up SupabaseEcommerce project.
 
 There is a [Github repository](https://github.com/pramit-marattha/SupabaseEcommerce) dedicated to this project, which consists of three branches. Clone the [`SupabaseEcommerce-starter`](https://github.com/pramit-marattha/SupabaseEcommerce/tree/SupabaseEcommerce-starter) branch to get started.
 
@@ -43,3 +43,52 @@ It usually only takes a few minutes to get everything set up. So, for this proje
 Your application’s folder structure should look something like this.
 
 ![Folder structure](https://user-images.githubusercontent.com/37651620/158068978-ce6f3ba8-1571-46e9-840a-4c9a79f01666.png)
+
+So you might be curious about the source of the content. Remember that all of our source code is housed in the pages folder, and react/next will inject it into the root div element. Let’s take a look at our pages folder, which contains some javascript files and one API folder.
+
+![Pages](https://user-images.githubusercontent.com/37651620/158071549-8daff075-bf73-4873-96ca-ab3cd473848d.png)
+
+Now, head over to our `index.js` file
+
+```jsx
+// index.js
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
+
+import products from "data.json";
+
+export default function Home() {
+  return (
+    <Layout>
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
+    </Layout>
+  );
+}
+```
+
+So, Now let’s look at the `_app.js` file.
+
+```jsx
+// _app.js
+import "../styles/globals.css";
+import { Toaster } from "react-hot-toast";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Toaster />
+    </>
+  );
+}
+
+export default MyApp;
+```
+
+The App component is used by Next.js to create pages. You can control the page initialization by simply overriding it. It allows you to do amazing things like: “Persisting layout across page changes”, “Keeping state while navigating pages”, “Custom error handling using componentDidCatch”,”Inject additional data into pages and Add global CSS” are just a few of the great things you can accomplish with it.
+
+In the above `\_app.js` code the Component parameter represents the active page, when you switch routes, Component will change to the new page. As a result, the page will receive any props you pass to Component. Meanwhile pageProps is an empty object that contains the initial props that were preloaded for your page by one of the data fetching methods.
+
+
