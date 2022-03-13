@@ -10,7 +10,6 @@ export default function Home() {
         <span className="text-3xl text-success">S</span>upaa
         <span className="text-3xl text-success">S</span>hopp
       </h1>
-      <p className="text-gray-300 text-xs">Shop as much as you wanttt!!</p>
       <div className="mt-8 p-5">
         <Grid products={products} />
       </div>
