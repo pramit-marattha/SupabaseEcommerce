@@ -34,13 +34,57 @@
   },
   {
     "id": "004",
-    "image": "/products/baseballgloves_600.png",
-    "title": "Baseball Gloves",
+    "image": "/products/bangle_600.png",
+    "title": "Bangle",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "new",
+    "warranty": 2,
+    "price": 200
+  },
+  {
+    "id": "005",
+    "image": "/products/bed_600.png",
+    "title": "Large Bed",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "authenticity": 100,
     "returnPolicy": 1,
     "status": "out of stock!",
     "warranty": 1,
-    "price": 20
+    "price": 105
+  },
+  {
+    "id": "006",
+    "image": "/products/binderclip_600.png",
+    "title": "Binder clip",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 2,
+    "status": "new",
+    "warranty": 1,
+    "price": 2
+  },
+  {
+    "id": "007",
+    "image": "/products/beyblade_600.png",
+    "title": "BeyBlade Burst",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "out of stock!",
+    "warranty": 1,
+    "price": 15
+  },
+  {
+    "id": "008",
+    "image": "/products/boxinggloves_600.png",
+    "title": "Boxing gloves",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 2,
+    "status": "new",
+    "warranty": 1,
+    "price": 45
   }
 ]
