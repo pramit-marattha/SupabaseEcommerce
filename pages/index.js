@@ -4,54 +4,6 @@ import SecondaryButton from "@/components/SecondaryButton";
 import { motion } from "framer-motion";
 
 export default function Home() {
-  const DATA = [
-    {
-      header: "Benefit #1",
-      description: `Ipsum qui exercitation excepteur qui sint consectetur officia quis ex. 
-    Amet adipisicing do aute ad tempor ut sit occaecat deserunt esse velit enim anim id. 
-    Aliquip cillum eiulgod irure cillum est sunt laboris tempor consequat elit ullamco. 
-    Ipsum dolor culpa dolor ea.`,
-      image: "images/benefit-1.jpeg",
-      imageAltTag: "benefit-1",
-      bullets: [
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-      ],
-      reversed: false,
-    },
-    {
-      header: "Benefit #2",
-      description: `Ipsum qui exercitation excepteur qui sint consectetur officia quis ex. 
-    Amet adipisicing do aute ad tempor ut sit occaecat deserunt esse velit enim anim id. 
-    Aliquip cillum eiulgod irure cillum est sunt laboris tempor consequat elit ullamco. 
-    Ipsum dolor culpa dolor ea.`,
-      image: "images/benefit-2.jpeg",
-      imageAltTag: "benefit-2",
-      bullets: [
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-      ],
-      reversed: true,
-    },
-    {
-      header: "Benefit #3",
-      description: `Ipsum qui exercitation excepteur qui sint consectetur officia quis ex. 
-    Amet adipisicing do aute ad tempor ut sit occaecat deserunt esse velit enim anim id. 
-    Aliquip cillum eiulgod irure cillum est sunt laboris tempor consequat elit ullamco. 
-    Ipsum dolor culpa dolor ea.`,
-      image: "images/benefit-3.jpeg",
-      imageAltTag: "benefit-3",
-      bullets: [
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-        "Cupidatat quis voluptate consequat velit ipsum occaecat.",
-      ],
-      reversed: false,
-    },
-  ];
-
   return (
     <Layout>
       <div className="max-w-6xl mx-auto py-12 flex flex-col md:flex-row space-y-8 md:space-y-0">
@@ -66,7 +18,7 @@ export default function Home() {
             </p>
             <div className="flex space-x-4">
               <PrimaryButton text="Register" link="/" />
-              <SecondaryButton text="Let's Shop!" link="/contact" />
+              <SecondaryButton text="Let's Shop!" link="/products" />
             </div>
           </div>
         </div>
