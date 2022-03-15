@@ -48,7 +48,13 @@ So you might be curious about the source of the content. Remember that all of ou
 
 ![Pages](https://user-images.githubusercontent.com/37651620/158071549-8daff075-bf73-4873-96ca-ab3cd473848d.png)
 
-Now, head over to our `index.js` file
+Before we dive any further lets actually create a landing page for our site.
+
+so before we even begin first you need to install `framer-motion` library.
+
+![Framer Motion](https://user-images.githubusercontent.com/37651620/158306049-86478da8-4e06-473d-bfec-493196a228de.png)
+
+Now import the `Layout` and `Grid` components into our `index.js` file, then import the `data.json` file as products and make the changes as follows.
 
 ```jsx
 // index.js
@@ -90,5 +96,3 @@ export default MyApp;
 The App component is used by Next.js to create pages. You can control the page initialization by simply overriding it. It allows you to do amazing things like: “Persisting layout across page changes”, “Keeping state while navigating pages”, “Custom error handling using componentDidCatch”,”Inject additional data into pages and Add global CSS” are just a few of the great things you can accomplish with it.
 
 In the above `\_app.js` code the Component parameter represents the active page, when you switch routes, Component will change to the new page. As a result, the page will receive any props you pass to Component. Meanwhile pageProps is an empty object that contains the initial props that were preloaded for your page by one of the data fetching methods.
-
-
