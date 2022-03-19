@@ -55,10 +55,9 @@ const Confirm = ({ show = false, email = "" }) => (
             </h3>
 
             <p className="text-lg text-center mt-4">
-              We emailed a magic link to <strong>{email ?? ""}</strong>.
+              We have sed and email to <strong>{email ?? ""}</strong>.
               <br />
-              Check your inbox and click the link in the email to login or sign
-              up.
+              Check your email and click on that confirmation link.
             </p>
           </div>
         </div>
@@ -156,9 +155,16 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                   <div className="flex justify-center">
                     <Link href="/">
                       <a className="flex items-center space-x-1">
-                        <ShoppingCartIcon className="shrink-0 w-10 h-10 text-teal-500" />
-                        <span className="text-xl font-semibold tracking-wide">
-                          Supaa<span className="text-teal-500">Shopp</span>
+                        <img
+                          className="shrink-0 w-24 h-24 text-primary"
+                          src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png"
+                          alt="Logo"
+                        />
+                        <span className="text-2xl font-semibold tracking-wide text-gray-400">
+                          <span className="text-3xl text-success">S</span>
+                          upabase
+                          <span className="text-3xl text-success">E</span>
+                          commerce
                         </span>
                       </a>
                     </Link>
@@ -168,7 +174,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                     as="h3"
                     className="mt-6 font-bold text-lg sm:text-2xl text-center"
                   >
-                    {showSignIn ? "Welcome back!" : "Create your account"}
+                    {showSignIn ? "Welcome back!" : "Create an account"}
                   </Dialog.Title>
 
                   {!showSignIn ? (
@@ -191,7 +197,11 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                         width={32}
                         height={32}
                       />
-                      <span>Sign {showSignIn ? "in" : "up"} with Google</span>
+
+                      <span className="text-2xl text-info">
+                        Sign
+                        {showSignIn ? " in" : " up"} with Google
+                      </span>
                     </button>
 
                     {/* Sign with email */}
@@ -206,7 +216,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                           <Input
                             name="email"
                             type="email"
-                            placeholder="suppaashop@email.com"
+                            placeholder="superbase_ecommerce@email.com"
                             disabled={disabled}
                             spellCheck={false}
                           />
@@ -217,7 +227,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                             className="mt-6 w-full bg-teal-600 text-white py-2 px-8 rounded-md focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
                           >
                             {isSubmitting
-                              ? "Loading..."
+                              ? "Loading....."
                               : `Sign ${showSignIn ? "in" : "up"}`}
                           </button>
 
@@ -250,7 +260,7 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                                   }}
                                   className="underline underline-offset-1 font-semibold text-teal-500 hover:text-teal-600 disabled:hover:text-teal-500 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                  Sign in
+                                  Login
                                 </button>
                                 .
                               </>
