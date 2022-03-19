@@ -128,7 +128,6 @@ const Layout = ({ children = null }) => {
                             </span>
                           </div>
                         </div>
-
                         <div className="py-2">
                           {menuItems.map(
                             ({ label, href, onClick, icon: Icon }) => (
