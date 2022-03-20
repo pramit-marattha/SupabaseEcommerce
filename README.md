@@ -56,9 +56,10 @@ so before we even begin first you need to install `framer-motion` library.
 
 ![Framer Motion](https://user-images.githubusercontent.com/37651620/158306049-86478da8-4e06-473d-bfec-493196a228de.png)
 
-Let's dive in and create a beautiful looking UI for our E-commerce application before we start on the backend integration part. Let's start by making a landing page for the app, and then move on to making a product page for it. So, let's create a `Layout` component and add the following code to it.
+Let's dive in and create a beautiful looking UI for our E-commerce application before we start on the backend integration part. Let's start by making a landing page for the app, and then move on to making a product page for it. So, let's create a `Layout` component inside the `components` folder and add the following code to it.
 
 ```jsx
+// components/Layout.js
 import { Fragment, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
