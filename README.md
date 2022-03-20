@@ -641,6 +641,10 @@ So, if you re-run the server, this is what your application should look like.
 
 ![Demo Footer](https://user-images.githubusercontent.com/37651620/159170273-6b13b471-5d96-4e7e-88f4-9551edc253b6.png)
 
+The structure of your component folders should resemble something like this.
+
+![Demo](https://user-images.githubusercontent.com/37651620/159170780-1308379d-4532-4d9f-b2d7-f069b9564eac.png)
+
 Congratulationss!! Now that you've successfully created a landing page for the application, let's move on to the core of the matter: creating the product section of the application.
 
 So, Now let’s look at the `_app.js` file.
