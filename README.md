@@ -4,9 +4,9 @@
 
 `SuperbaseEcommerce` is the the app we'll be building on in this tutorial. It is simply an online ecommerce shopping site where users can browse all of the products, bookmark their favorite products, and even purchase the products. It is similar to an Amazon app, but it is simpler because we will not implement any actual payment or shipping procedures. Here's a live demonstration of the final version of the app. This is how your app should look after you finish this tutorial. Feel free to experiment with it to get a sense of all the features we will be implementing.
 
-![Demo](https://user-images.githubusercontent.com/37651620/159121742-ae459f4d-8767-4319-a39b-1f24bb04545b.png)
+![Demo](https://user-images.githubusercontent.com/37651620/159170940-d8c210c4-5b9d-47f7-b5d8-547bea3106fc.png)
 
-![Demo](https://user-images.githubusercontent.com/37651620/158060188-db5fce3a-e840-429b-9b0d-32b064d0cd01.png)
+![Demo](https://user-images.githubusercontent.com/37651620/159170944-b48ead6f-6482-4234-a5ea-7b20335ca7fe.png)
 
 So, in this tutorial, we'll learn how to build this full-stack app with `Next.js`, the react framework, `NextAuth.js`, for implementing passwordless and OAuth authentication, `Supabase`, for persisting app data into a PostgreSQL database and stashing media files and information, and `Prisma`, for making it simple to read and write data from and to the database from our app.
 
@@ -665,3 +665,158 @@ export default MyApp;
 The App component is used by Next.js to create pages. You can control the page initialization by simply overriding it. It allows you to do amazing things like: “Persisting layout across page changes”, “Keeping state while navigating pages”, “Custom error handling using componentDidCatch”,”Inject additional data into pages and Add global CSS” are just a few of the great things you can accomplish with it.
 
 In the above `\_app.js` code the Component parameter represents the active page, when you switch routes, Component will change to the new page. As a result, the page will receive any props you pass to Component. Meanwhile pageProps is an empty object that contains the initial props that were preloaded for your page by one of the data fetching methods.
+
+---
+
+### Chatwoot Configuration
+
+#### Chatwoot configuration on Heroku
+
+Let's get started by creating a chatwoot instance on Heroku.
+
+- **Step First**: Create a free Heroku account by going to `https://www.heroku.com/` and then going to the chatwoot GitHub repository and clicking the `Deploy to Heroku` button in the readme section.
+
+![Heroku](https://user-images.githubusercontent.com/37651620/154656511-8dfe366d-91f3-4ce6-b62f-e0685f7e5e0c.png)
+
+![deploy](https://user-images.githubusercontent.com/37651620/154667615-9bcbba5d-55a3-4c8a-b424-1fd16f2d5a8c.png)
+
+- **Step Second**: After you click that button, you'll be able to see the basic setup that chatwoot has already completed. Give the `App name` and replace the `FRONTEND_URL` with the `App name` you just gave, then click `Deploy App`.
+
+![installation](https://user-images.githubusercontent.com/37651620/154667713-39521f5d-1e13-4590-b183-0e91605ea52a.png)
+
+![URL config](https://user-images.githubusercontent.com/37651620/154667860-ec3bc9a5-1893-4c1f-a6e5-b947f53aee48.png)
+
+- **Step Third**: Depending on your PC, network status, and server location, the program may take 10 to 15 minutes to install.
+
+![deploying](https://user-images.githubusercontent.com/37651620/154668003-faacf254-27b6-4d62-b423-7c966c8b96fd.png)
+
+- **Step Fourth**: After the app has been deployed, go to the settings panel in the dashboard.
+
+![settings](https://user-images.githubusercontent.com/37651620/154668111-b7143eaa-949e-4e68-b359-2efbe96dd5f9.png)
+
+- **Step Fifth**: The domain section can be found in the settings menu. In a new window, open that URL. Finally, you've configured chatwoot in Heroku successfully.
+
+![domain](https://user-images.githubusercontent.com/37651620/154668214-c0cb9408-f40c-46bc-aa22-c94bb03b449b.png)
+
+- **Step Sixth**: Inside the Resources section, make sure the `web` and `worker` resources are enabled.
+
+![Resource section](https://user-images.githubusercontent.com/37651620/154669168-ca27814f-0246-47e7-9043-2ca2f597decc.png)
+
+- **Step Seventh**: You should be able to log onto your chatwoot account if everything went smoothly.
+
+![login](https://user-images.githubusercontent.com/37651620/154668422-8193c13b-c929-45f8-a2dc-9ab03d0db75d.png)
+
+So, your first account has been created successfully.The main benefit of deploying chatwoot on Heroku is that you have full control over your entire application and your entire data.
+
+#### Chatwoot cloud setup
+
+There is another way to get started with [chatwoot](https://www.chatwoot.com/) which is the cloud way so this is the most straightforward way to get started is to register directly on the chatwoots [website](https://www.chatwoot.com/).
+
+![chatwoot](https://user-images.githubusercontent.com/37651620/154645706-797c98f2-6a4b-4103-bacd-2f62e661ce2f.png)
+
+- **Step First**: Fill out all of the required information to create an account.
+
+![Sign up](https://user-images.githubusercontent.com/37651620/154647221-b2c786ff-becf-4793-90a3-2d407d475982.png)
+
+- **Step Second**: You'll get an email asking you to confirm your account after you've signed up.
+
+![Account Confirm](https://user-images.githubusercontent.com/37651620/154648298-2f3e1115-e08c-47c6-a718-f53815971f6a.png)
+
+- **Step Third**: Proceed to login after you've confirmed your account by clicking the "Confirm my account" option.
+
+![Login](https://user-images.githubusercontent.com/37651620/154648416-31972c34-a9e7-4c8e-b546-6f8c23a6cf73.png)
+
+- **Step Fourth**: You may now visit the Chatwoot dashboard and begin connecting it with plethora of platform (websites, Facebook, Twitter, etc.).
+
+![Chatwoot dashboard](https://user-images.githubusercontent.com/37651620/154648980-c1e6330a-3b59-4eae-a0a6-67a9bdb9bf3a.png)
+
+##### Chatwoot Cloud Configuration
+
+- **Step First**: Let's set up an inbox. The inbox channel acts as a communication hub where everything can be managed, including live-chat, a Facebook page, a Twitter profile, email, and WhatsApp.
+
+![inbox channel](https://user-images.githubusercontent.com/37651620/154649555-f612e58f-c8f6-409f-9489-923dd21faa24.png)
+
+- **Step Second**: Now, configure a website and domain name, as well as all of the heading and tagline information like shown below
+
+![Website Domain](https://user-images.githubusercontent.com/37651620/154650303-51d77789-1b5e-4c0c-a6ef-183f4f37101e.png)
+
+- **Step Third**: Finally, to control your mailbox, add "Agents." Keep in mind that only the "Agents" who have been authorized will have full access to the inbox.
+
+![agents](https://user-images.githubusercontent.com/37651620/154650376-71e0d61c-8186-4e3f-8d25-eba2384ccde3.png)
+
+- **Step Fourth**: Blammmm!. The website channel has been created successfully.
+
+![website channel code](https://user-images.githubusercontent.com/37651620/154650930-c24a192f-b86a-4f6a-92eb-99222a2faecc.png)
+
+The website channel must now be connected. Simply copy and paste the entire javascript code provided by chatwoot.Now, head back to our react app and create a new `component` folder and inside that folder create a new file/component called `ChatwootWidget` and inside it create a script which helps to loads the Chatwoot asynchronously. Simply follow the exact same steps outlined in the following code below.
+
+```js
+// ChatwootWidget.js
+import { useEffect } from "react";
+
+const ChatwootWidget = () => {
+  useEffect(() => {
+    // Add Chatwoot Settings
+    window.chatwootSettings = {
+      hideMessageBubble: false,
+      position: "right",
+      locale: "en",
+      type: "expanded_bubble",
+    };
+
+    (function (d, t) {
+      var BASE_URL = "https://app.chatwoot.com";
+      var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+      g.src = BASE_URL + "/packs/js/sdk.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g, s);
+      g.onload = function () {
+        window.chatwootSDK.run({
+          websiteToken: ""// add you secret token here,
+          baseUrl: BASE_URL,
+        });
+      };
+    })(document, "script");
+  }, []);
+
+  return null;
+};
+
+export default ChatwootWidget;
+```
+
+The best part about chatwoot is that you can customize it to your liking. For example, you can modify the position of the floating bubble, extend it, change the language, and hide the message bubble. All it takes is the addition of the following line of code.
+
+```js
+window.chatwootSettings = {
+  hideMessageBubble: false,
+  position: "right",
+  locale: "en",
+  type: "expanded_bubble",
+};
+```
+
+Finally, it's time to import the ChatwootWidget component into our `_app_.js` file. To do so, simply navigate to the `_app_.js` file and import the chatwoot widget, then render that component. Your final code of `_app_.js` should look like this.
+
+```jsx
+// _app.js.js
+import "../styles/globals.css";
+import { Toaster } from "react-hot-toast";
+import ChatwootWidget from "@/components/ChatwootWidget";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <Toaster />
+      <ChatwootWidget />
+    </>
+  );
+}
+
+export default MyApp;
+```
+
+Now that you've completed the chatwoot integration, your finished project should resemble something like this.
