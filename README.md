@@ -641,6 +641,10 @@ So, if you re-run the server, this is what your application should look like.
 
 ![Demo Footer](https://user-images.githubusercontent.com/37651620/159170273-6b13b471-5d96-4e7e-88f4-9551edc253b6.png)
 
+The structure of your component folders should resemble something like this.
+
+![Demo](https://user-images.githubusercontent.com/37651620/159170780-1308379d-4532-4d9f-b2d7-f069b9564eac.png)
+
 Congratulationss!! Now that you've successfully created a landing page for the application, let's move on to the core of the matter: creating the product section of the application.
 
 So, Now let’s look at the `_app.js` file.
@@ -662,9 +666,31 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-The App component is used by Next.js to create pages. You can control the page initialization by simply overriding it. It allows you to do amazing things like: “Persisting layout across page changes”, “Keeping state while navigating pages”, “Custom error handling using componentDidCatch”,”Inject additional data into pages and Add global CSS” are just a few of the great things you can accomplish with it.
+The App component is used by `Next.js` to create pages. You can control the page initialization by simply overriding it. It allows you to do amazing things like: `Persisting layout across page changes`, `Keeping state while navigating pages`, `Custom error handling using componentDidCatch`,`Inject additional data into pages and Add global styles/CSS` are just a few of the great things you can accomplish with it.
 
-In the above `\_app.js` code the Component parameter represents the active page, when you switch routes, Component will change to the new page. As a result, the page will receive any props you pass to Component. Meanwhile pageProps is an empty object that contains the initial props that were preloaded for your page by one of the data fetching methods.
+In the above `\_app.js` code the Component parameter represents the active page, when you switch routes, Component will change to the new page. As a result, the page will receive any props you pass to Component. Meanwhile `pageProps` is an empty object that contains the initial props that were preloaded for your page by one of the data fetching methods.
+
+Now, inside the `pages` folder, create a new page called `products.js` and import the `Layout` and `Grid` components, then import the `data.json` file as products and make the following changes.
+
+```jsx
+// pages/products.js
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
+
+import products from "data.json";
+
+export default function Products() {
+  return (
+    <Layout>
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
+    </Layout>
+  );
+}
+```
+
+## Database Configurations
 
 ---
 
