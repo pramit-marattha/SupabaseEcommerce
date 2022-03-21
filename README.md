@@ -670,7 +670,7 @@ The App component is used by `Next.js` to create pages. You can control the page
 
 In the above `\_app.js` code the Component parameter represents the active page, when you switch routes, Component will change to the new page. As a result, the page will receive any props you pass to Component. Meanwhile `pageProps` is an empty object that contains the initial props that were preloaded for your page by one of the data fetching methods.
 
-Now, inside the `pages` folder, create a new page called `products.js` and import the `Layout` and `Grid` components, then import the `data.json` file as products and make the following changes.
+Now, inside the `pages` folder, create a new page called `products.js` and import the `Layout` and `Grid` components, then import the `data.json` file as products and make the following changes to it.
 
 ```jsx
 // pages/products.js
@@ -691,6 +691,40 @@ export default function Products() {
 ```
 
 ## Database Configurations
+
+Before jumping directly on our application, we'll be utilizing the power of `Supabase` to create a `PostgreSQL` database, the `Prisma schema` to define the app data model, and Next.js to connect those two together. So, let's get started building our database.
+
+### Supabase Configurartion
+
+Creating a PostgreSQL database in Supabase is as simple as starting a new project. Head over to [supabase.com](https://supabase.com/) and `Sign-in` to your account.
+
+![Supabase](https://user-images.githubusercontent.com/37651620/159206560-3b46e8b2-ded2-4146-97e3-4a640b72c8b7.png)
+
+After you've successfully signed in, you should see something similar to this.
+
+![New project](https://user-images.githubusercontent.com/37651620/159206701-23d739cc-37d7-47b6-bf39-63c4e04c3400.png)
+
+Now, select `New project` button. Fill in your project's required details and again click `Create Project` button and wait for the new database to load.
+
+![Create Project](https://user-images.githubusercontent.com/37651620/159207037-87f64dbe-baf6-45b3-81c5-c9c9d9dd65c3.png)
+
+![Creating project](https://user-images.githubusercontent.com/37651620/159207145-ef6283f0-96b2-4e24-b537-a449c8c2f8b5.png)
+
+After the supabase configured the project, your dashboard should look something similar to this.
+
+![SupabaseDashboard](https://user-images.githubusercontent.com/37651620/159207301-ba504656-531f-4782-a806-25b9d6169322.png)
+
+### Creating a connection URL
+
+Follow the steps outlined below to retrieve your database connection URL after your database has been successfully created. We'll need it to use Prisma in our Next.js app to query and create data.
+
+- **Step1** : Head over to the `Settings tab`(Located at the left side)
+
+![Setting Tab](https://user-images.githubusercontent.com/37651620/159232832-0ecb374c-1185-464d-b1ba-99b82c650119.png)
+
+- **Step2** : Click the `Database` tab in the sidebar (Located on the left side)
+
+![Database](https://user-images.githubusercontent.com/37651620/159232570-299da821-d7ec-4b35-bef8-7f6b55a86327.png)
 
 ---
 
