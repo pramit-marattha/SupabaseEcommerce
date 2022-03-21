@@ -726,6 +726,10 @@ Follow the steps outlined below to retrieve your database connection URL after y
 
 ![Database](https://user-images.githubusercontent.com/37651620/159232570-299da821-d7ec-4b35-bef8-7f6b55a86327.png)
 
+- **Step3** : Head over to the bottom of the page to find the `Connection string` section, then select `Nodejs` and copy the URL.
+
+![Connection string](https://user-images.githubusercontent.com/37651620/159337831-bed01290-cd64-4b48-8afa-a37fc35e2540.png)
+
 ---
 
 ### Chatwoot Configuration
