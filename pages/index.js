@@ -1,14 +1,14 @@
 import Layout from "@/components/Layout";
-import Hero from "@/components/Hero";
-import ShopCards from "@/components/ShopCards";
-import Footer from "@/components/Footer";
+import Grid from "@/components/Grid";
 
-export default function Home() {
+import products from "data.json";
+
+export default function Products() {
   return (
     <Layout>
-      <Hero />
-      <ShopCards />
-      <Footer />
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
     </Layout>
   );
 }
