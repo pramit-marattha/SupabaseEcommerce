@@ -2,11 +2,11 @@
 <img src="https://user-images.githubusercontent.com/37651620/159424112-2faca207-6e1d-42b7-9b2f-b889cb5a693e.png" alt="Supabase Ecommerce logo">
 </p>
 
+`SuperbaseEcommerce` is the the app we'll be building on in this tutorial. It is simply an online ecommerce shopping site where users can browse all of the products, bookmark their favorite products, and even purchase the products. It is similar to an Amazon app, but it is simpler because we will not implement any actual payment or shipping procedures. Here's a live demonstration of the final version of the app. This is how your app should look after you finish this tutorial. Feel free to experiment with it to get a sense of all the features we will be implementing.
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png" height="250" width="250"alt="Supabase Ecommerce logo">
 </p>
-
-`SuperbaseEcommerce` is the the app we'll be building on in this tutorial. It is simply an online ecommerce shopping site where users can browse all of the products, bookmark their favorite products, and even purchase the products. It is similar to an Amazon app, but it is simpler because we will not implement any actual payment or shipping procedures. Here's a live demonstration of the final version of the app. This is how your app should look after you finish this tutorial. Feel free to experiment with it to get a sense of all the features we will be implementing.
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159170940-d8c210c4-5b9d-47f7-b5d8-547bea3106fc.png)
 
