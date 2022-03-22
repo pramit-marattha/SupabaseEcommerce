@@ -884,3 +884,7 @@ export default MyApp;
 ```
 
 Now that you've completed the chatwoot integration, your finished project should resemble something like this.
+
+![Demo](https://user-images.githubusercontent.com/37651620/159338768-74294b10-5ed6-474f-973c-2d26ecd1b467.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/159338798-54c1f63b-ad86-4a7e-a2d4-587c43c98365.png)
