@@ -1406,3 +1406,20 @@ Now that you've completed the chatwoot integration, your finished project should
 ![Demo](https://user-images.githubusercontent.com/37651620/159338768-74294b10-5ed6-474f-973c-2d26ecd1b467.png)
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159338798-54c1f63b-ad86-4a7e-a2d4-587c43c98365.png)
+
+# Conclusion
+
+Congratulations 🎉 🎉!!. You've successfully created a fullstack application with Next.js, Supabase, Prisma and chatwoot.This article may have been entertaining as well as instructive in terms of creating a fully fgledged working ecommerce site from absolute scratch.
+
+Aviyel is a collaborative platform that assists open source project communities in monetizing and long-term sustainability. To know more visit Aviyel.com and find great blogs and events, just like this one! Sign up now for early access, and don’t forget to follow us on our socials
+
+# Refrences
+
+- [Managing .env files and setting variables](https://www.prisma.io/docs/guides/development-environment/environment-variables/managing-env-files-and-setting-variables#manage-env-files-manually)
+- [A first look at Prisma Studio](https://daily-dev-tips.com/posts/a-first-look-at-prisma-studio/)
+- [Pre-rendering and Data Fetching](https://nextjs.org/learn/basics/data-fetching/two-forms)
+- [Data Model](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#scalar-fields)
+- [Generating the client](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/generating-prisma-client)
+- [Instantiating the client](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/instantiate-prisma-client)
+- [Prisma schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
+- [Prisma schema reference](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#model-fields)
