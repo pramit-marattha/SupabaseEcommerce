@@ -955,6 +955,38 @@ Finally, check the Supabase dashboard to see if everything has been successfully
 
 ![Supabase](https://user-images.githubusercontent.com/37651620/159447800-82feed93-398d-4a8a-89c1-fbf10a4adf74.png)
 
+## Prisma Studio
+
+Prisma Studio is a visual interface to the data residing inside your database where you can use to quickly visualize and manipulate the data. The cool thing about it is that it runs in entirely on your browser and you don't need to set up any connections because it's already comes with the prisma package. Not only that, from the studio, you can quickly open all of your application's models and interact with them directly via. studio itself.
+
+> Note: There is also desktop application available to download
+
+### Launching Prisma Studio
+
+Launching the prisma studio is really very easy. Literally all you have to do is run the following command from a Prisma project.
+
+```
+npx prisma studio
+```
+
+![PrismaStudio](https://user-images.githubusercontent.com/37651620/159463409-b9614ad2-5c63-4519-98f2-d2ab791cc604.png)
+
+Now, open your browser and head over to `http://localhost:5555/`. You should be able to see the single table that we've created previously if you've followed all of the steps correctly.
+
+![PrismaStudio](https://user-images.githubusercontent.com/37651620/159463579-2019f826-22c6-484c-a877-319ec6abe170.png)
+
+![PrismaStudio](https://user-images.githubusercontent.com/37651620/159463739-764e709b-9ce9-469b-ada2-dce371a8efad.png)
+
+### Manually adding the records
+
+Lets manually add some records and save the changes that we made.
+
+![PrismaStudio](https://user-images.githubusercontent.com/37651620/159464112-a0575030-4b00-455a-8698-48983f534d39.png)
+
+![DataFilled](https://user-images.githubusercontent.com/37651620/159473084-776a272e-0186-42eb-8905-27e6de0ce1c4.png)
+
+Finally, lets create a functionality to access that data from within our Next.js app, where we can create new records, update existing ones, and delete old ones.
+
 ---
 
 ### Chatwoot Configuration
