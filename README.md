@@ -730,6 +730,79 @@ Follow the steps outlined below to retrieve your database connection URL after y
 
 ![Connection string](https://user-images.githubusercontent.com/37651620/159337831-bed01290-cd64-4b48-8afa-a37fc35e2540.png)
 
+## Initializing Prisma
+
+Prisma is a next-generation ORM that can be used in Node.js and TypeScript applications to access a database. W eare going to use prisma fo our application because it includes all of the code we need to run our queries. It will save us a lot of time and keep us from having to write a bunch of boilerplate codes.
+
+### Installing prisma
+
+#### Prisma CLI installation
+
+The Prisma command line interface (CLI) is the primary command-line interface for interacting with your Prisma project. It can create new project assets, generate Prisma Client, and analyze existing database structures via introspection to create your application models automatically.
+
+```
+npm i prisma
+```
+
+![Prisma Installation](https://user-images.githubusercontent.com/37651620/159416387-5caea0cc-d44b-4cb4-ba9d-7cc2b02a086c.png)
+
+#### Initialize prisma
+
+Once you've installed the Prisma CLI, run the following command to get `Prisma` started in your `Next.js` application. It will then create a `/prisma` directory and the `schema.prisma` file within it inside your particular project folder. so, inside it we will be adding all the configuration for our application.
+
+```
+npx prisma init
+```
+
+![prismaSchema](https://user-images.githubusercontent.com/37651620/159417419-f3dbe24b-0041-4306-be72-9090142d5bc3.png)
+
+```js
+// prisma.schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+> Note: schema.prisma uses Prisma Schema Language(PSL)
+
+`Prisma-client-js`, the Prisma JavaScript client, is the configured client represented by the `generator` block.
+
+```js
+generator client {
+  provider = "prisma-client-js"
+}
+```
+
+Next one is the the provider property of this block represents the type of database we want to use, and the connection url represents how Prisma connects to it.
+
+```js
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+### Environment variable
+
+Using environment variables in the schema allows you to keep secrets out of the schema file which in turn improves the portability of the schema by allowing you to use it in different environments. Environment variables is created automatically after we fire the `npx prisma init` command.
+
+> Note: Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB (Preview) and CockroachDB (Preview).
+
+```
+DATABASE_URL="postgresql://test:test@localhost:5432/test?schema=foo"
+```
+
+As you can see, there is an `DATABASE_URL` variable with a dummy connection URL in this environment variable `.env`. So, replace this value with the connection string you obtained from Supabase.
+
+```
+DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.bboujxbwamqvgypibdkh.supabase.co:5432/postgres"
+```
+
 ---
 
 ### Chatwoot Configuration
