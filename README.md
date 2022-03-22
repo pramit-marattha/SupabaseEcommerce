@@ -787,6 +787,22 @@ datasource db {
 }
 ```
 
+### Environment variable
+
+Using environment variables in the schema allows you to keep secrets out of the schema file which in turn improves the portability of the schema by allowing you to use it in different environments. Environment variables is created automatically after we fire the `npx prisma init` command.
+
+> Note: Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB (Preview) and CockroachDB (Preview).
+
+```
+DATABASE_URL="postgresql://test:test@localhost:5432/test?schema=foo"
+```
+
+As you can see, there is an `DATABASE_URL` variable with a dummy connection URL in this environment variable `.env`. So, replace this value with the connection string you obtained from Supabase.
+
+```
+DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.bboujxbwamqvgypibdkh.supabase.co:5432/postgres"
+```
+
 ---
 
 ### Chatwoot Configuration
