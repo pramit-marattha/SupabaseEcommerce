@@ -127,7 +127,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
-"@prisma/client@^3.10.0":
+"@prisma/client@^3.11.0":
   "integrity" "sha512-d42o/tlalaWMmNOR4r5BiR6YYTYEV82eZ2lNKOm5ht3WyYwI9e+zy2MyZnNO4Fx5e08RAhW+GRVcEgKl5faUaQ=="
   "resolved" "https://registry.npmjs.org/@prisma/client/-/client-3.11.0.tgz"
   "version" "3.11.0"
