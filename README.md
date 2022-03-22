@@ -730,6 +730,30 @@ Follow the steps outlined below to retrieve your database connection URL after y
 
 ![Connection string](https://user-images.githubusercontent.com/37651620/159337831-bed01290-cd64-4b48-8afa-a37fc35e2540.png)
 
+## Initializing Prisma
+
+Prisma is a next-generation ORM that can be used in Node.js and TypeScript applications to access a database. W eare going to use prisma fo our application because it includes all of the code we need to run our queries. It will save us a lot of time and keep us from having to write a bunch of boilerplate codes.
+
+### Installing prisma
+
+#### Prisma CLI installation
+
+The Prisma command line interface (CLI) is the primary command-line interface for interacting with your Prisma project. It can create new project assets, generate Prisma Client, and analyze existing database structures via introspection to create your application models automatically.
+
+```
+npm i prisma
+```
+
+![Prisma Installation](https://user-images.githubusercontent.com/37651620/159416387-5caea0cc-d44b-4cb4-ba9d-7cc2b02a086c.png)
+
+#### Initialize prisma
+
+Once you've installed the Prisma CLI, run the following command to get `Prisma` started in your `Next.js` application. It will then create a `/prisma` directory and the `schema.prisma` file within it inside your particular project folder. so, inside it we will be adding all the configuration for our application.
+
+```
+npx prisma init
+```
+
 ---
 
 ### Chatwoot Configuration
