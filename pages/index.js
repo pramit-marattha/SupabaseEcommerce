@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
 import Grid from "@/components/Grid";
 
-import products from "data.json";
+import products from "products.json";
 
-export default function Products() {
+export default function Home() {
   return (
     <Layout>
       <div className="mt-8 p-5">
