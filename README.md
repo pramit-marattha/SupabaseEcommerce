@@ -894,6 +894,48 @@ The Prisma Client is generated from the Prisma schema and is unique to your proj
 
 Pruning in `Node.js` package managers has no effect on the `.prisma` folder.
 
+## Creating a table in `Supabase`
+
+![DashBoardScrrenshot](https://user-images.githubusercontent.com/37651620/159444118-7a373b58-b972-4bb9-9c8b-ddfd274526bd.png)
+
+```
+npx prisma db push
+```
+
+![PrismaDB Push](https://user-images.githubusercontent.com/37651620/159443639-7b95dd91-7a02-4bd1-8603-749ccfa5a0ab.png)
+
+![PushDatabase](https://user-images.githubusercontent.com/37651620/159445495-f28b10b6-7bb1-49d3-a6ab-e044950b51c6.png)
+
+```
+npx prisma migrate dev
+```
+
+![PrismaMigrate](https://user-images.githubusercontent.com/37651620/159447379-c54179e1-e1d1-4f6b-a8fc-d73059b360c4.png)
+
+![FolderStructure](https://user-images.githubusercontent.com/37651620/159448032-a0259fb8-ed70-4275-9676-41f8b6fbc57f.png)
+
+```sql
+
+-- CreateTable
+CREATE TABLE "Product" (
+    "id" TEXT NOT NULL,
+    "image" TEXT,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "status" TEXT NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
+    "authenticity" INTEGER NOT NULL,
+    "returnPolicy" INTEGER NOT NULL,
+    "warranty" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
+);
+```
+
+![Supabase](https://user-images.githubusercontent.com/37651620/159447800-82feed93-398d-4a8a-89c1-fbf10a4adf74.png)
+
 ---
 
 ### Chatwoot Configuration
