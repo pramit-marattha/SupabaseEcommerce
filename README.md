@@ -1111,6 +1111,42 @@ As you can see, products data is comming from `products.json` file.
 ]
 ```
 
+This data & information is then passed as a prop from the `Product` component to the `Grid` component. The `Grid` component is then in charge of rendering those data as a grid of Card on the screen.
+
+```js
+// Products.js
+import PropTypes from "prop-types";
+import Card from "@/components/Card";
+import { ExclamationIcon } from "@heroicons/react/outline";
+
+const Grid = ({ products = [] }) => {
+  const isEmpty = products.length === 0;
+
+  return isEmpty ? (
+    <p className="text-purple-700 bg-amber-100 px-4 rounded-md py-2 max-w-max inline-flex items-center space-x-1">
+      <ExclamationIcon className="shrink-0 w-5 h-5 mt-px" />
+      <span>No data to be displayed.</span>
+    </p>
+  ) : (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <Card key={product.id} {...product} onClickFavorite={toggleFavorite} />
+      ))}
+    </div>
+  );
+};
+
+Grid.propTypes = {
+  products: PropTypes.array,
+};
+
+export default Grid;
+```
+
+Now we want to retrieve data from our database, and we'll do so using Server-Side Rendering (SSR). The ability of an application to convert HTML files on the server into a fully rendered HTML page for the client is known as server-side rendering (SSR). The web browser sends a request for information to the server, which responds immediately by sending the client a fully rendered page.
+
+![SSR](https://user-images.githubusercontent.com/37651620/159494240-00db1ac9-7f1d-4dbe-88ef-0bdd3c196ac5.png)
+
 ---
 
 ### Chatwoot Configuration
