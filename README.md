@@ -1252,6 +1252,10 @@ Lets give users the functionality to actually create records from the applicatio
 
 ## Create a new records
 
+Head over to the `pages/` folder and make a new file called `addProduct.js`.
+
+![Folder structure](https://user-images.githubusercontent.com/37651620/159563363-3253d40c-e2e0-4ed7-99dd-3f90e642791e.png)
+
 
 
 ---
