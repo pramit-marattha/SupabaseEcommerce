@@ -987,6 +987,130 @@ Lets manually add some records and save the changes that we made.
 
 Finally, lets create a functionality to access that data from within our Next.js app, where we can create new records, update existing ones, and delete old ones.
 
+## Interacting with data using Next.js
+
+You should see some demo datas if you look at the `Product` page of your application.
+
+![LandingShopButton](https://user-images.githubusercontent.com/37651620/159481862-f5f5cb2f-52f4-4b52-80a3-2cb63f41a43d.png)
+
+![Product Page](https://user-images.githubusercontent.com/37651620/159481958-aeaab5e3-a495-47f8-acce-980701262a5f.png)
+
+Now, open the file `pages/products.js`, file which represents our app's product page.
+
+```js
+// pages/products.js
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
+
+import products from "products.json";
+
+export default function Products() {
+  return (
+    <Layout>
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
+    </Layout>
+  );
+}
+```
+
+As you can see, products data is comming from `products.json` file.
+
+```json
+// products.json
+[
+  {
+    "id": "001",
+    "image": "/products/ballpen_300.png",
+    "title": "Ball Pen",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "new",
+    "warranty": 1,
+    "price": 50
+  },
+  {
+    "id": "002",
+    "image": "/products/actioncamera_300.png",
+    "title": "Go-pro cam",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "new",
+    "warranty": 1,
+    "price": 30
+  },
+  {
+    "id": "003",
+    "image": "/products/alarmclock_300.png",
+    "title": "Alarm Clock",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "new",
+    "warranty": 1,
+    "price": 20
+  },
+  {
+    "id": "004",
+    "image": "/products/bangle_600.png",
+    "title": "Bangle",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "new",
+    "warranty": 2,
+    "price": 200
+  },
+  {
+    "id": "005",
+    "image": "/products/bed_600.png",
+    "title": "Large Bed",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "out of stock!",
+    "warranty": 1,
+    "price": 105
+  },
+  {
+    "id": "006",
+    "image": "/products/binderclip_600.png",
+    "title": "Binder clip",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 2,
+    "status": "new",
+    "warranty": 1,
+    "price": 2
+  },
+  {
+    "id": "007",
+    "image": "/products/beyblade_600.png",
+    "title": "BeyBlade Burst",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 1,
+    "status": "out of stock!",
+    "warranty": 1,
+    "price": 15
+  },
+  {
+    "id": "008",
+    "image": "/products/boxinggloves_600.png",
+    "title": "Boxing gloves",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "authenticity": 100,
+    "returnPolicy": 2,
+    "status": "new",
+    "warranty": 1,
+    "price": 45
+  }
+]
+```
+
 ---
 
 ### Chatwoot Configuration
