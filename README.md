@@ -896,7 +896,15 @@ Pruning in `Node.js` package managers has no effect on the `.prisma` folder.
 
 ## Creating a table in `Supabase`
 
+If you look at your database in Supabase, you'll notice there is no table inside it. It's because we haven't yet created the `Product` table.
+
 ![DashBoardScrrenshot](https://user-images.githubusercontent.com/37651620/159444118-7a373b58-b972-4bb9-9c8b-ddfd274526bd.png)
+
+The Prisma model we defined in our `schema.prisma` file has not yet been reflected in our database. As a result, we must manually push changes to our data model to our database.
+
+### Pushing the data model
+
+Prisma makes it really very easy to synchonize the schema with our database.So to do that follow the command listed below.
 
 ```
 npx prisma db push
@@ -906,11 +914,21 @@ npx prisma db push
 
 ![PushDatabase](https://user-images.githubusercontent.com/37651620/159445495-f28b10b6-7bb1-49d3-a6ab-e044950b51c6.png)
 
+This command is only good for prototyping on the schemas locally.
+
+OR,
+
 ```
 npx prisma migrate dev
 ```
 
+This method (`npx prisma migrate dev`) will be used in this article because it is very useful in that it allows us to directly sync our Prisma schema with our database while also allowing us to easily track the changes that we make.
+
+So, to begin using Prisma Migrate, enter the following command into the command prompt and after that enter a name for this first migration when prompted.
+
 ![PrismaMigrate](https://user-images.githubusercontent.com/37651620/159447379-c54179e1-e1d1-4f6b-a8fc-d73059b360c4.png)
+
+After you have completed this process successfully, prisma will automatically generate SQL database migration files, and you should be able to see the SQL which should look something like this if you look inside the `prisma` folder.
 
 ![FolderStructure](https://user-images.githubusercontent.com/37651620/159448032-a0259fb8-ed70-4275-9676-41f8b6fbc57f.png)
 
@@ -929,10 +947,11 @@ CREATE TABLE "Product" (
     "warranty" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
 ```
+
+Finally, check the Supabase dashboard to see if everything has been successfully synced.
 
 ![Supabase](https://user-images.githubusercontent.com/37651620/159447800-82feed93-398d-4a8a-89c1-fbf10a4adf74.png)
 
