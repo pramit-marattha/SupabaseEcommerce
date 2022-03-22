@@ -63,13 +63,6 @@ const ListingForm = ({
 
   return (
     <div>
-      <div className="mb-8 max-w-md">
-        <ImageUpload
-          initialImage={{ src: image, alt: initialFormValues.title }}
-          onChangePicture={upload}
-        />
-      </div>
-
       <Formik
         initialValues={initialFormValues}
         validationSchema={ListingSchema}
@@ -77,13 +70,13 @@ const ListingForm = ({
         onSubmit={handleOnSubmit}
       >
         {({ isSubmitting, isValid }) => (
-          <Form className="space-y-8">
+          <Form className="space-y-6">
             <div className="space-y-6">
               <Input
                 name="title"
                 type="text"
                 label="Title"
-                placeholder="Entire rental unit - Amsterdam"
+                placeholder="Entire your product name..."
                 disabled={disabled}
               />
 
@@ -91,26 +84,26 @@ const ListingForm = ({
                 name="description"
                 type="textarea"
                 label="Description"
-                placeholder="Very charming and modern apartment in Amsterdam..."
+                placeholder="Enter your product description...."
                 disabled={disabled}
-                rows={5}
+                rows={3}
               />
 
               <Input
                 name="price"
                 type="number"
                 min="0"
-                label="Price per night"
+                label="Price of the product..."
                 placeholder="100"
                 disabled={disabled}
               />
 
-              <div className="flex space-x-4">
+              <div className="justify-center">
                 <Input
                   name="authenticity"
                   type="number"
                   min="0"
-                  label="authenticity"
+                  label="authenticity(%)"
                   placeholder="2"
                   disabled={disabled}
                 />
@@ -118,7 +111,7 @@ const ListingForm = ({
                   name="returnPolicy"
                   type="number"
                   min="0"
-                  label="returnPolicy"
+                  label="returnPolicy(? years)"
                   placeholder="1"
                   disabled={disabled}
                 />
@@ -126,18 +119,23 @@ const ListingForm = ({
                   name="warranty"
                   type="number"
                   min="0"
-                  label="warranty"
+                  label="warranty(? years)"
                   placeholder="1"
                   disabled={disabled}
                 />
               </div>
             </div>
-
-            <div className="flex justify-end">
+            <div className="mb-6 max-w-full">
+              <ImageUpload
+                initialImage={{ src: image, alt: initialFormValues.title }}
+                onChangePicture={upload}
+              />
+            </div>
+            <div className="flex justify-center">
               <button
                 type="submit"
                 disabled={disabled || !isValid}
-                className="bg-teal-600 text-white py-2 px-6 rounded-md focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
+                className="bg-success text-white py-2 px-6 rounded-md focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
               >
                 {isSubmitting ? "Submitting..." : buttonText}
               </button>
