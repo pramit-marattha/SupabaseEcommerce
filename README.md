@@ -754,6 +754,39 @@ Once you've installed the Prisma CLI, run the following command to get `Prisma` 
 npx prisma init
 ```
 
+![prismaSchema](https://user-images.githubusercontent.com/37651620/159417419-f3dbe24b-0041-4306-be72-9090142d5bc3.png)
+
+```js
+// prisma.schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+> Note: schema.prisma uses Prisma Schema Language(PSL)
+
+`Prisma-client-js`, the Prisma JavaScript client, is the configured client represented by the `generator` block.
+
+```js
+generator client {
+  provider = "prisma-client-js"
+}
+```
+
+Next one is the the provider property of this block represents the type of database we want to use, and the connection url represents how Prisma connects to it.
+
+```js
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
 ---
 
 ### Chatwoot Configuration
