@@ -1244,6 +1244,10 @@ As you can see, its fixed now
 
 ![Fixed error](https://user-images.githubusercontent.com/37651620/159523214-7b6ff048-327d-4e71-b9f3-f5360102b6f9.png)
 
+Finally, your application should resemble something like this:
+
+![Application Final Demno](https://user-images.githubusercontent.com/37651620/159528273-977d0514-9618-441a-9f7e-3ad461159fa9.png)
+
 ---
 
 ### Chatwoot Configuration
