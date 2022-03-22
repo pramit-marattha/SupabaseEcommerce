@@ -884,13 +884,13 @@ Finally, after you have done that inside your `./node_modules` folder, you shoul
 
 Here is a graphical illustration of the typical workflow for the Prisma Client generation:
 
-![Workflow](https://user-images.githubusercontent.com/37651620/159436090-8b032ff7-b059-4532-8e78-8ca5e615ddea.png)
+![WorkFlow](https://user-images.githubusercontent.com/37651620/159502666-d8c85d78-02a3-4af0-8f4e-6d29e9193247.png)
 
 > Note also that prisma generate is automatically invoked when you're installing the `@prisma/client` npm package.
 
 The Prisma Client is generated from the Prisma schema and is unique to your project. Each time you change the schema and run prisma generate, the client code changes itself.
 
-![PrismaClient](https://user-images.githubusercontent.com/37651620/159436648-558a2ac1-5f59-48fe-9e9b-99515d8ae986.png)
+![PrismaClient](https://user-images.githubusercontent.com/37651620/159506561-c361008c-6516-44fe-8d98-07ec4688cc38.png)
 
 Pruning in `Node.js` package managers has no effect on the `.prisma` folder.
 
