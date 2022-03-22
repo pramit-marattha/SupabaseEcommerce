@@ -1256,7 +1256,38 @@ Head over to the `pages/` folder and make a new file called `addProduct.js`.
 
 ![Folder structure](https://user-images.githubusercontent.com/37651620/159563363-3253d40c-e2e0-4ed7-99dd-3f90e642791e.png)
 
+```js
+// addProducts.js
+import Layout from "@/components/Layout";
+import ListingForm from "@/components/ListingForm";
 
+const addProducts = () => {
+  const createProduct = () => null;
+
+  return (
+    <Layout>
+      <div className="max-w-screen-xl mx-auto flex-col">
+        <h1 className="text-3xl font-medium text-gray-200 justify-center">
+          Add your Products
+        </h1>
+        <div className="mt-8">
+          <ListingForm
+            buttonText="Add Product"
+            redirectPath="/products"
+            onSubmit={createProduct}
+          />
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default addProducts;
+```
+
+This `addProduct` component renders the entire page's layout, which consist of a form from where you can add the product details and informations.
+
+![Demo](https://user-images.githubusercontent.com/37651620/159575908-1488990b-6982-446d-901a-27d72aeff82e.png)
 
 ---
 
