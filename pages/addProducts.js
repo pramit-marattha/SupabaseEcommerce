@@ -6,15 +6,14 @@ const addProducts = () => {
 
   return (
     <Layout>
-      <div className="max-w-screen-sm mx-auto">
-        <h1 className="text-xl font-medium text-gray-800">List your home</h1>
-        <p className="text-gray-500">
-          Fill out the form below to list a new home.
-        </p>
+      <div className="max-w-screen-xl mx-auto flex-col">
+        <h1 className="text-3xl font-medium text-gray-200 justify-center">
+          Add your Products
+        </h1>
         <div className="mt-8">
           <ListingForm
-            buttonText="Add home"
-            redirectPath="/"
+            buttonText="Add Product"
+            redirectPath="/products"
             onSubmit={createProduct}
           />
         </div>
