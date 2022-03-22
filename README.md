@@ -847,7 +847,52 @@ Each field, as shown in our Product model, has at least a name and its type. To 
 - [Prisma schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
 - [Prisma schema reference](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#model-fields)
 
+#### Generate Prisma Client
 
+After designning Prisma model, we can begin generating our Prisma Client. We'll need to use Prisma's JavaScript library later in the article to interact with our data from within our `Next.js` app without having to write all of the SQL queries ourselves. But there's more to it. Prisma Client is, in fact, an auto-generated type-safe API designed specifically for our application which will gives us the JavaScript code we need to run queries on our data.
+
+- **Step 1**: Installing prisma client
+
+  ```
+  npm install @prisma/client
+  ```
+
+  ![PrismaClient](https://user-images.githubusercontent.com/37651620/159432404-3e880b0a-4058-44f9-b922-652e7e389d63.png)
+
+- **step2**: Generating Prisma client
+
+  ```
+  npx prisma generate
+  ```
+
+  ![Prisma Generate](https://user-images.githubusercontent.com/37651620/159432604-f6586811-262f-4d5f-b79b-5be9c4f1d5ff.png)
+
+#### The @prisma/client npm package
+
+The @prisma/client npm package consists of two key parts:
+
+- The `@prisma/client` module itself, which only changes when you re-install the package
+- The `.prisma/client` folder, which is the default location for the unique Prisma Client generated from your schema
+
+`@prisma/client/index.d.ts` exports `.prisma/client`
+
+Finally, after you have done that inside your `./node_modules` folder, you should now find the generated Prisma Client code.
+
+![PrismaGenerate](https://user-images.githubusercontent.com/37651620/159435415-e4765d0e-b5c5-4fc5-9ad2-1ddf381539a4.png)
+
+> Note: You need to re-run the prisma generate command after every change that's made to your Prisma schema to update the generated Prisma Client code.
+
+Here is a graphical illustration of the typical workflow for the Prisma Client generation:
+
+![Workflow](https://user-images.githubusercontent.com/37651620/159436090-8b032ff7-b059-4532-8e78-8ca5e615ddea.png)
+
+> Note also that prisma generate is automatically invoked when you're installing the `@prisma/client` npm package.
+
+The Prisma Client is generated from the Prisma schema and is unique to your project. Each time you change the schema and run prisma generate, the client code changes itself.
+
+![PrismaClient](https://user-images.githubusercontent.com/37651620/159436648-558a2ac1-5f59-48fe-9e9b-99515d8ae986.png)
+
+Pruning in `Node.js` package managers has no effect on the `.prisma` folder.
 
 ---
 
