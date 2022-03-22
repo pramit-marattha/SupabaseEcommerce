@@ -807,6 +807,48 @@ As you can see, there is an `DATABASE_URL` variable with a dummy connection URL 
 DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.bboujxbwamqvgypibdkh.supabase.co:5432/postgres"
 ```
 
+### Prisma schemas and models
+
+We can begin working on our application's data models now that database is finally connected to your `Next.js`. In Prisma, our application models should be defined within the Prisma schema using the Prisma models. These models represent the entities of our application and are defined by the model blocks in the `schema.prisma` file. Each block contains several fields that represent the data for each entity. So, let's begin by creating the `Product` model, which will define the data schema for our products properties.
+
+#### Defining models
+
+Models represent the entities of your application domain. Models are represented by model blocks and define a number of fields. In this data model, `Product` is the model.
+
+```js
+// prisma.schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  image       String?
+  title       String
+  description String
+  status      String
+  price       Float
+  authenticity        Int
+  returnPolicy        Int
+  warranty       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+```
+
+Each field, as shown in our Product model, has at least a name and its type. To learn more about the Scalar types and Prisma schema refrences visit the following links .
+
+- [Data model](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#scalar-fields)
+- [Prisma schema](https://www.prisma.io/docs/concepts/components/prisma-schema)
+- [Prisma schema reference](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#model-fields)
+
+
+
 ---
 
 ### Chatwoot Configuration
