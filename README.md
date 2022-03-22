@@ -1147,6 +1147,107 @@ Now we want to retrieve data from our database, and we'll do so using Server-Sid
 
 ![SSR](https://user-images.githubusercontent.com/37651620/159494240-00db1ac9-7f1d-4dbe-88ef-0bdd3c196ac5.png)
 
+So, in order to use Server Side Rendering(SSR) with `Next.js`, we must export an asynchronous function `getServerSideProps` from within the file, which exports the page where we want to render out our data. The data returned by the `getServerSideProps` function will then be used by `Next.js` to pre-render our page on each individual request. Let's get started and export this function from our applicartion's `Prodcuts` page.
+
+```js
+// pages/products.js
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
+
+import products from "products.json";
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      // props for the Home component
+    },
+  };
+}
+
+export default function Products() {
+  return (
+    <Layout>
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
+    </Layout>
+  );
+}
+```
+
+To get the data from supabase, import and instantiate the generated Prisma client.
+
+```jsx
+// pages/products.js
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
+import { PrismaClient } from "@prisma/client";
+
+import products from "products.json";
+
+const prisma = new PrismaClient();
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      // props for the Home component
+    },
+  };
+}
+
+export default function Products() {
+  return (
+    <Layout>
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
+    </Layout>
+  );
+}
+```
+
+Now, Using the `findMany` query, we can get all of the records in our Product table:
+
+```jsx
+// pages/products.js
+import Layout from "@/components/Layout";
+import Grid from "@/components/Grid";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+export async function getServerSideProps() {
+  const products = await prisma.product.findMany();
+  return {
+    props: {
+      products: JSON.parse(JSON.stringify(products)),
+    },
+  };
+}
+
+export default function Products({ products = [] }) {
+  return (
+    <Layout>
+      <div className="mt-8 p-5">
+        <Grid products={products} />
+      </div>
+    </Layout>
+  );
+}
+```
+
+Simply re-run the application, but if you get an error that looks like the one below, you'll need to regenerate the prisma and then re-run the server.
+
+![Error](https://user-images.githubusercontent.com/37651620/159522918-6f09bba1-2577-4118-9ed2-b597bcb90794.png)
+
+As you can see, its fixed now
+
+![Fixed error](https://user-images.githubusercontent.com/37651620/159523214-7b6ff048-327d-4e71-b9f3-f5360102b6f9.png)
+
+Finally, your application should resemble something like this:
+
+![Application Final Demno](https://user-images.githubusercontent.com/37651620/159528273-977d0514-9618-441a-9f7e-3ad461159fa9.png)
+
 ---
 
 ### Chatwoot Configuration
