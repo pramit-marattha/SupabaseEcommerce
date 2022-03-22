@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import Grid from "@/components/Grid";
 
-import products from "data.json";
+import products from "products.json";
 
 export default function Products() {
   return (
