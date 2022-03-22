@@ -1175,7 +1175,7 @@ export default function Products() {
 }
 ```
 
-To get the data from supabase, import and instantiate the generated Prisma client.
+To get the data from supabase, import and instantiate the `generated Prisma client`.
 
 ```jsx
 // pages/products.js
@@ -1247,6 +1247,16 @@ As you can see, its fixed now
 Finally, your application should resemble something like this:
 
 ![Application Final Demno](https://user-images.githubusercontent.com/37651620/159528273-977d0514-9618-441a-9f7e-3ad461159fa9.png)
+
+Lets give users the functionality to actually create records from the application itself. So, first step is to actually create.
+
+## Create a new records
+
+Head over to the `pages/` folder and make a new file called `addProduct.js`.
+
+![Folder structure](https://user-images.githubusercontent.com/37651620/159563363-3253d40c-e2e0-4ed7-99dd-3f90e642791e.png)
+
+
 
 ---
 
@@ -1411,7 +1421,7 @@ Now that you've completed the chatwoot integration, your finished project should
 
 Congratulations 🎉 🎉!!. You've successfully created a fullstack application with Next.js, Supabase, Prisma and chatwoot.This article may have been entertaining as well as instructive in terms of creating a fully fgledged working ecommerce site from absolute scratch.
 
-Aviyel is a collaborative platform that assists open source project communities in monetizing and long-term sustainability. To know more visit Aviyel.com and find great blogs and events, just like this one! Sign up now for early access, and don’t forget to follow us on our socials
+Aviyel is a collaborative platform that assists open source project communities in monetizing and long-term sustainability. To know more visit Aviyel.com and find great blogs and events, just like this one! Sign up now for early access, and don't forget to follow us on our socials
 
 # Refrences
 
