@@ -1670,7 +1670,7 @@ export default async function handler(req, res) {
       warranty,
     } = req.body;
 
-    const home = await prisma.home.create({
+    const home = await prisma.product.create({
       data: {
         image,
         title,
@@ -1688,6 +1688,92 @@ export default async function handler(req, res) {
       .json({ message: `HTTP method ${req.method} is not supported.` });
   }
 }
+```
+
+Finally lets add some try catch block to Handle the error.
+
+```js
+// pages/api/products.js
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    try {
+      const {
+        image,
+        title,
+        description,
+        price,
+        authenticity,
+        returnPolicy,
+        warranty,
+      } = req.body;
+      const home = await prisma.product.create({
+        data: {
+          image,
+          title,
+          description,
+          price,
+          authenticity,
+          returnPolicy,
+          warranty,
+        },
+      });
+      res.status(200).json(home);
+    } catch (e) {
+      res.status(500).json({ message: "Something went horribly wrong!!" });
+    }
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method ${req.method} is not supported.` });
+  }
+}
+```
+
+Now that we've created our `API`, let's call the API endpoint. To do so, open the `addProduct.js` file in the `pages` folder and make the following changes to the code, but first, we'll need to install the `axios` package, so do that first.
+
+```bash
+npm i axios
+```
+
+OR
+
+```bash
+yarn add axios
+```
+
+![Axios](https://user-images.githubusercontent.com/37651620/159638586-5cf82100-c3dc-4dbc-a4a8-7188408aba4c.png)
+
+```js
+//pages/addProducts.js
+import Layout from "@/components/Layout";
+import ListingForm from "@/components/ListingForm";
+
+const addProducts = () => {
+  const createProduct = () => (data) => axios.post("/api/products", data);
+
+  return (
+    <Layout>
+      <div className="max-w-screen-xl mx-auto flex-col">
+        <h1 className="text-3xl font-medium text-gray-200 justify-center">
+          Add your Products
+        </h1>
+        <div className="mt-8">
+          <ListingForm
+            buttonText="Add Product"
+            redirectPath="/products"
+            onSubmit={createProduct}
+          />
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default addProducts;
 ```
 
 ---
