@@ -1289,6 +1289,14 @@ This `addProduct` component renders the entire page's layout, which consist of a
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159575908-1488990b-6982-446d-901a-27d72aeff82e.png)
 
+### API endpoint
+
+Let's actually create a API endpoint that will actually create a new record on our database via `addProduct` function.
+
+```js
+const createProduct = () => null;
+```
+
 ---
 
 ### Chatwoot Configuration
