@@ -1670,7 +1670,7 @@ export default async function handler(req, res) {
       warranty,
     } = req.body;
 
-    const home = await prisma.home.create({
+    const home = await prisma.product.create({
       data: {
         image,
         title,
@@ -1681,6 +1681,49 @@ export default async function handler(req, res) {
         warranty,
       },
     });
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method ${req.method} is not supported.` });
+  }
+}
+```
+
+Finally lets add some try catch block to Handle the error.
+
+```js
+// pages/api/products.js
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    try {
+      const {
+        image,
+        title,
+        description,
+        price,
+        authenticity,
+        returnPolicy,
+        warranty,
+      } = req.body;
+      const home = await prisma.product.create({
+        data: {
+          image,
+          title,
+          description,
+          price,
+          authenticity,
+          returnPolicy,
+          warranty,
+        },
+      });
+      res.status(200).json(home);
+    } catch (e) {
+      res.status(500).json({ message: "Something went horribly wrong!!" });
+    }
   } else {
     res.setHeader("Allow", ["POST"]);
     res
