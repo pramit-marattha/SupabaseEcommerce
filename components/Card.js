@@ -44,7 +44,7 @@ const Card = ({
               }`}
             />
           </button>
-          <div class="absolute top-2 left-2 badge badge-warning">
+          <div className="absolute top-2 left-2 badge badge-warning">
             {status ?? ""}
           </div>
         </div>
@@ -65,14 +65,14 @@ const Card = ({
             </div>
           </h2>
           <p>
-            <div class="card-actions justify-center pt-2">
-              <div class="badge badge-outline">
+            <div className="card-actions justify-center pt-2">
+              <div className="badge badge-outline">
                 {authenticity ?? 0}% authentic
               </div>
-              <div class="badge badge-outline">
+              <div className="badge badge-outline">
                 {returnPolicy ?? 0} month return policy
               </div>
-              <div class="badge badge-outline">
+              <div className="badge badge-outline">
                 {warranty ?? 0} years warranty
               </div>
             </div>
