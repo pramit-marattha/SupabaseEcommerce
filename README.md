@@ -1627,6 +1627,8 @@ export default async function handler(req, res) {
 
 #### Adding new records with Prisma Client
 
+Now, lets use Prisma Client to create a new `Product` record in the database using the data from the current HTTP request.
+
 ```js
 // pages/api/products.js
 export default async function handler(req, res) {
@@ -1640,6 +1642,45 @@ export default async function handler(req, res) {
       returnPolicy,
       warranty,
     } = req.body;
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method ${req.method} is not supported.` });
+  }
+}
+```
+
+After that, lets actually initialize `Prisma` and call the `create` function that prisma provides.
+
+```js
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    const {
+      image,
+      title,
+      description,
+      price,
+      authenticity,
+      returnPolicy,
+      warranty,
+    } = req.body;
+
+    const home = await prisma.home.create({
+      data: {
+        image,
+        title,
+        description,
+        price,
+        authenticity,
+        returnPolicy,
+        warranty,
+      },
+    });
   } else {
     res.setHeader("Allow", ["POST"]);
     res
