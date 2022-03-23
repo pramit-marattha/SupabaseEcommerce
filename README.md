@@ -1601,10 +1601,28 @@ Let's actually create a API endpoint that will actually create a new record on o
 const createProduct = () => null;
 ```
 
-But first, within our `Next.js` application project, let's create an `API` endpoint to handle our `POST` request for creating new records. `Next.js` provides a file based API routing so any file in the `pages/api` folder is mapped to `/api/*` and treated as an API endpoint rather than a page. They're only `server-side` bundles, so they won't add to the size of your `client-side` bundle.So, create a file name called `products.js` inside the `pages/api` folder and inside it create a request handler fucntion like shown below.
+But first, within our `Next.js` application project, let's create an `API` endpoint to handle our `POST` request for creating new records. `Next.js` provides a file based API routing so any file in the `pages/api` folder is mapped to `/api/*` and treated as an API endpoint rather than a page. They're only `server-side` bundles, so they won't add to the size of your `client-side` bundle. So, create a file name called `products.js` inside the `pages/api` folder and inside it create a request handler fucntion like shown below.
 
 ```js
 export default async function handler(req, res) {}
+```
+
+#### Handling `POST` request for `products`
+
+Before we go any further, use `req.method` to check the `HTTP` method of the request inside that `request handler` function. After that, return a 405 status code to the client becasue we are not handlling any kind of HTTP method.
+
+```js
+// pages/api/products.js
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    // TODO
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method ${req.method} is not supported.` });
+  }
+}
 ```
 
 ---
