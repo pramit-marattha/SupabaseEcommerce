@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import ListingForm from "@/components/ListingForm";
 
 const addProducts = () => {
-  const createProduct = () => null;
+  const createProduct = () => (data) => axios.post("/api/products", data);
 
   return (
     <Layout>

@@ -1733,6 +1733,49 @@ export default async function handler(req, res) {
 }
 ```
 
+Now that we've created our `API`, let's call the API endpoint. To do so, open the `addProduct.js` file in the `pages` folder and make the following changes to the code, but first, we'll need to install the `axios` package, so do that first.
+
+```bash
+npm i axios
+```
+
+OR
+
+```bash
+yarn add axios
+```
+
+![Axios](https://user-images.githubusercontent.com/37651620/159638586-5cf82100-c3dc-4dbc-a4a8-7188408aba4c.png)
+
+```js
+//pages/addProducts.js
+import Layout from "@/components/Layout";
+import ListingForm from "@/components/ListingForm";
+
+const addProducts = () => {
+  const createProduct = () => (data) => axios.post("/api/products", data);
+
+  return (
+    <Layout>
+      <div className="max-w-screen-xl mx-auto flex-col">
+        <h1 className="text-3xl font-medium text-gray-200 justify-center">
+          Add your Products
+        </h1>
+        <div className="mt-8">
+          <ListingForm
+            buttonText="Add Product"
+            redirectPath="/products"
+            onSubmit={createProduct}
+          />
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default addProducts;
+```
+
 ---
 
 ### Chatwoot Configuration
