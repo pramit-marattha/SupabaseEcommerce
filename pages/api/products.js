@@ -1,3 +1,7 @@
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
@@ -10,7 +14,7 @@ export default async function handler(req, res) {
         returnPolicy,
         warranty,
       } = req.body;
-      const home = await prisma.home.create({
+      const home = await prisma.product.create({
         data: {
           image,
           title,
