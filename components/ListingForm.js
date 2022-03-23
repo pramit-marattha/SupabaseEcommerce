@@ -10,6 +10,7 @@ import ImageUpload from "@/components/ImageUpload";
 const ListingSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
   description: Yup.string().trim().required(),
+  status: Yup.string().trim().required(),
   price: Yup.number().positive().integer().min(1).required(),
   authenticity: Yup.number().positive().integer().min(1).required(),
   returnPolicy: Yup.number().positive().integer().min(1).required(),
@@ -55,6 +56,7 @@ const ListingForm = ({
     image: "",
     title: "",
     description: "",
+    status: "",
     price: 0,
     authenticity: 1,
     returnPolicy: 1,
@@ -87,6 +89,14 @@ const ListingForm = ({
                 placeholder="Enter your product description...."
                 disabled={disabled}
                 rows={3}
+              />
+
+              <Input
+                name="status"
+                type="text"
+                label="Status(new/out-of-stock/used)"
+                placeholder="Enter your product status...."
+                disabled={disabled}
               />
 
               <Input
@@ -125,12 +135,7 @@ const ListingForm = ({
                 />
               </div>
             </div>
-            <div className="mb-6 max-w-full">
-              <ImageUpload
-                initialImage={{ src: image, alt: initialFormValues.title }}
-                onChangePicture={upload}
-              />
-            </div>
+
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -143,6 +148,12 @@ const ListingForm = ({
           </Form>
         )}
       </Formik>
+      <div className="mb-6 max-w-full">
+        <ImageUpload
+          initialImage={{ src: image, alt: initialFormValues.title }}
+          onChangePicture={upload}
+        />
+      </div>
     </div>
   );
 };
@@ -152,6 +163,7 @@ ListingForm.propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
+    status: PropTypes.string,
     price: PropTypes.number,
     authenticity: PropTypes.number,
     returnPolicy: PropTypes.number,

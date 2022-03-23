@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import ListingForm from "@/components/ListingForm";
+import axios from "axios";
 
 const addProducts = () => {
   const createProduct = () => (data) => axios.post("/api/products", data);
