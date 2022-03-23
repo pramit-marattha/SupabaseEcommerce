@@ -1625,6 +1625,22 @@ export default async function handler(req, res) {
 }
 ```
 
+#### Adding new records with Prisma Client
+
+```js
+// pages/api/products.js
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+    const { image, title, description, price, authenticity, returnPolicy, warranty } = req.body;
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method ${req.method} is not supported.` });
+  }
+}
+```
+
 ---
 
 ### Chatwoot Configuration
