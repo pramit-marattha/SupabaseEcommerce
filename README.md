@@ -1285,6 +1285,310 @@ const addProducts = () => {
 export default addProducts;
 ```
 
+After that head over to the `ListingForm` component and make the following changes to that component.
+
+```js
+//components/ListingForm.js
+import { useState } from "react";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import * as Yup from "yup";
+import { toast } from "react-hot-toast";
+import { Formik, Form } from "formik";
+import Input from "@/components/Input";
+import ImageUpload from "@/components/ImageUpload";
+
+const ListingSchema = Yup.object().shape({
+  title: Yup.string().trim().required(),
+  description: Yup.string().trim().required(),
+  price: Yup.number().positive().integer().min(1).required(),
+  authenticity: Yup.number().positive().integer().min(1).required(),
+  returnPolicy: Yup.number().positive().integer().min(1).required(),
+  warranty: Yup.number().positive().integer().min(1).required(),
+});
+
+const ListingForm = ({
+  initialValues = null,
+  redirectPath = "",
+  buttonText = "Submit",
+  onSubmit = () => null,
+}) => {
+  const router = useRouter();
+
+  const [disabled, setDisabled] = useState(false);
+  const [imageUrl, setImageUrl] = useState(initialValues?.image ?? "");
+
+  const upload = async (image) => {
+    // TODO: Upload image to remote storage
+  };
+
+  const handleOnSubmit = async (values = null) => {
+    let toastId;
+    try {
+      setDisabled(true);
+      toastId = toast.loading("Submitting...");
+      // Submit data
+      if (typeof onSubmit === "function") {
+        await onSubmit({ ...values, image: imageUrl });
+      }
+      toast.success("Successfully submitted", { id: toastId });
+      // Redirect user
+      if (redirectPath) {
+        router.push(redirectPath);
+      }
+    } catch (e) {
+      toast.error("Unable to submit", { id: toastId });
+      setDisabled(false);
+    }
+  };
+
+  const { image, ...initialFormValues } = initialValues ?? {
+    image: "",
+    title: "",
+    description: "",
+    price: 0,
+    authenticity: 1,
+    returnPolicy: 1,
+    warranty: 1,
+  };
+
+  return (
+    <div>
+      <Formik
+        initialValues={initialFormValues}
+        validationSchema={ListingSchema}
+        validateOnBlur={false}
+        onSubmit={handleOnSubmit}
+      >
+        {({ isSubmitting, isValid }) => (
+          <Form className="space-y-6">
+            <div className="space-y-6">
+              <Input
+                name="title"
+                type="text"
+                label="Title"
+                placeholder="Entire your product name..."
+                disabled={disabled}
+              />
+
+              <Input
+                name="description"
+                type="textarea"
+                label="Description"
+                placeholder="Enter your product description...."
+                disabled={disabled}
+                rows={3}
+              />
+
+              <Input
+                name="price"
+                type="number"
+                min="0"
+                label="Price of the product..."
+                placeholder="100"
+                disabled={disabled}
+              />
+
+              <div className="justify-center">
+                <Input
+                  name="authenticity"
+                  type="number"
+                  min="0"
+                  label="authenticity(%)"
+                  placeholder="2"
+                  disabled={disabled}
+                />
+                <Input
+                  name="returnPolicy"
+                  type="number"
+                  min="0"
+                  label="returnPolicy(? years)"
+                  placeholder="1"
+                  disabled={disabled}
+                />
+                <Input
+                  name="warranty"
+                  type="number"
+                  min="0"
+                  label="warranty(? years)"
+                  placeholder="1"
+                  disabled={disabled}
+                />
+              </div>
+            </div>
+            <div className="mb-6 max-w-full">
+              <ImageUpload
+                initialImage={{ src: image, alt: initialFormValues.title }}
+                onChangePicture={upload}
+              />
+            </div>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                disabled={disabled || !isValid}
+                className="bg-success text-white py-2 px-6 rounded-md focus:outline-none focus:ring-4 focus:ring-teal-600 focus:ring-opacity-50 hover:bg-teal-500 transition disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
+              >
+                {isSubmitting ? "Submitting..." : buttonText}
+              </button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
+
+ListingForm.propTypes = {
+  initialValues: PropTypes.shape({
+    image: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    authenticity: PropTypes.number,
+    returnPolicy: PropTypes.number,
+    warranty: PropTypes.number,
+  }),
+  redirectPath: PropTypes.string,
+  buttonText: PropTypes.string,
+  onSubmit: PropTypes.func,
+};
+
+export default ListingForm;
+```
+
+After that, go to the `ImageUpload` file inside the component folder and copy the following code.
+
+```js
+// ImageUpload.js
+import { useState, useRef } from "react";
+import PropTypes from "prop-types";
+import Image from "next/image";
+import toast from "react-hot-toast";
+import classNames from "classnames";
+import { CloudUploadIcon } from "@heroicons/react/outline";
+
+const ImageUpload = ({
+  label = "Image",
+  initialImage = null,
+  objectFit = "cover",
+  accept = ".png, .jpg, .jpeg, .gif .jiff",
+  sizeLimit = 10 * 1024 * 1024,
+  onChangePicture = () => null,
+}) => {
+  const pictureRef = useRef();
+
+  const [image, setImage] = useState(initialImage);
+  const [updatingPicture, setUpdatingPicture] = useState(false);
+  const [pictureError, setPictureError] = useState(null);
+
+  const handleOnChangePicture = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    const fileName = file?.name?.split(".")?.[0] ?? "New file";
+
+    reader.addEventListener(
+      "load",
+      async function () {
+        try {
+          setImage({ src: reader.result, alt: fileName });
+          if (typeof onChangePicture === "function") {
+            await onChangePicture(reader.result);
+          }
+        } catch (err) {
+          toast.error("Unable to update image");
+        } finally {
+          setUpdatingPicture(false);
+        }
+      },
+      false
+    );
+
+    if (file) {
+      if (file.size <= sizeLimit) {
+        setUpdatingPicture(true);
+        setPictureError("");
+        reader.readAsDataURL(file);
+      } else {
+        setPictureError("File size is exceeding 10MB.");
+      }
+    }
+  };
+
+  const handleOnClickPicture = () => {
+    if (pictureRef.current) {
+      pictureRef.current.click();
+    }
+  };
+
+  return (
+    <div className="flex flex-col space-y-2">
+      <label className="text-gray-200 ">{label}</label>
+
+      <button
+        disabled={updatingPicture}
+        onClick={handleOnClickPicture}
+        className={classNames(
+          "relative aspect-video overflow-hidden rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition group focus:outline-none",
+          image?.src
+            ? "hover:opacity-50 disabled:hover:opacity-100"
+            : "border-2 border-dotted hover:border-gray-400 focus:border-gray-400 disabled:hover:border-gray-200"
+        )}
+      >
+        {image?.src ? (
+          <Image
+            src={image.src}
+            alt={image?.alt ?? ""}
+            layout="fill"
+            objectFit={objectFit}
+          />
+        ) : null}
+
+        <div className="flex items-center justify-center">
+          {!image?.src ? (
+            <div className="flex flex-col items-center space-y-2">
+              <div className="shrink-0 rounded-full p-2 bg-gray-200 group-hover:scale-110 group-focus:scale-110 transition">
+                <CloudUploadIcon className="w-4 h-4 text-gray-500 transition" />
+              </div>
+              <span className="text-xs font-semibold text-gray-500 transition">
+                {updatingPicture
+                  ? "Image Uploading..."
+                  : "Upload product Image"}
+              </span>
+            </div>
+          ) : null}
+          <input
+            ref={pictureRef}
+            type="file"
+            accept={accept}
+            onChange={handleOnChangePicture}
+            className="hidden"
+          />
+        </div>
+      </button>
+
+      {pictureError ? (
+        <span className="text-red-600 text-sm">{pictureError}</span>
+      ) : null}
+    </div>
+  );
+};
+
+ImageUpload.propTypes = {
+  label: PropTypes.string,
+  initialImage: PropTypes.shape({
+    src: PropTypes.string,
+    alt: PropTypes.string,
+  }),
+  objectFit: PropTypes.string,
+  accept: PropTypes.string,
+  sizeLimit: PropTypes.number,
+  onChangePicture: PropTypes.func,
+};
+
+export default ImageUpload;
+```
+
 This `addProduct` component renders the entire page's layout, which consist of a form from where you can add the product details and informations.
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159575908-1488990b-6982-446d-901a-27d72aeff82e.png)
@@ -1295,6 +1599,12 @@ Let's actually create a API endpoint that will actually create a new record on o
 
 ```js
 const createProduct = () => null;
+```
+
+But first, within our `Next.js` application project, let's create an `API` endpoint to handle our `POST` request for creating new records. `Next.js` provides a file based API routing so any file in the `pages/api` folder is mapped to `/api/*` and treated as an API endpoint rather than a page. They're only `server-side` bundles, so they won't add to the size of your `client-side` bundle.So, create a file name called `products.js` inside the `pages/api` folder and inside it create a request handler fucntion like shown below.
+
+```js
+export default async function handler(req, res) {}
 ```
 
 ---
