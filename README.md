@@ -1807,6 +1807,114 @@ It will automatically redirect you to the `/products` page and you should be abl
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159903167-ae9c4c76-aab3-4fff-880b-fb1a1e6a1d70.png)
 
+## Pre-rendering the pages
+
+We've used the `getServerSideProps` function to pre-render the `product` of our app using `Server-Side Rendering(SSR)`. Next.js, on the other hand, comes with a `built-in` pre-rendering method called `Static Generation (SSG)`.
+
+When a page uses Static Generation, the HTML for that page is generated during the build process. That means that when you run next build in production, the page HTML is generated. Each request will then be served with the same HTML. A `CDN` can cache it. You can statically generate pages with or without data using `Next.js`.
+
+![SSG](https://user-images.githubusercontent.com/37651620/159921224-aadedf3e-aaf1-4457-a5f9-486289bd28c6.png)
+
+We can use different `pre-rendering` techniques on our applications when we use a framework like `Next.js`. For something more simple and non-dynamic, we can use `static site generation(SSG)`. For dynamic content and more complex pages, we can use `server-side rendering(SSR)` .
+
+### Dynamic Routing with SSG
+
+We can still statically generate pages with SSG after fetching some external data during the build process, even if SSG generates HTML at build time. [learn more about static generation and dynamic routing](https://nextjs.org/docs/basic-features/pages).
+
+Let's get data at build time by exporting an `async` function called `getStaticProps` from the pages we want to statically generate.
+
+### For Example,
+
+```js
+// posts will be populated at build time by getStaticProps()
+function Blog({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+// This function gets called at build time on server-side.
+// It won't be called on client-side, so you can even do
+// direct database queries.
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch("https://.../posts");
+  const posts = await res.json();
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+export default Blog;
+```
+
+Let's put Static Generation(SSG) to work in our application. The pages that render each individual `Product` listing are the ones that we'll statically generate at the build time. However, because `product` listings are generated through the users, we could end up with massive amount of pages. As a result, we won't be able to define those routes using predefined paths. Otherwise, we'll end up with a slew of useless files cluttering up our project.
+
+We can easily create dynamic routes in `Next.js`. We just need to add brackets to a page's filename, `[id].js`, to create a dynamic route. However, in our project, we will place that in the `Products` folder. As a result, any route's `ids` will be matched with their specific id value, and the id value will be available inside the React component that renders the associated page.
+
+Now, go to the pages folder and make a new folder called `products`, then make a new file called `[id].js` inside it.
+
+![products](https://user-images.githubusercontent.com/37651620/159926080-e55b1760-02eb-41a6-a8ac-84a4c2c8b49b.png)
+
+And finally paste the following code inside that file.
+
+```jsx
+import Image from "next/image";
+import Layout from "@/components/Layout";
+
+const ListedProducts = (product = null) => {
+  return (
+    <Layout>
+      <div className="max-w-screen-lg mx-auto">
+        <div className="mt-6 relative aspect-video bg-gray-400 rounded-lg shadow-md overflow-hidden">
+          {product?.image ? (
+            <Image
+              src={product.image}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+            />
+          ) : null}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4">
+          <div>
+            <h1 className="text-2xl font-semibold truncate">
+              {product?.title ?? ""}
+            </h1>
+            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
+            <ol className="inline-flex items-center space-x-1 text-gray-500">
+              <li>
+                <span>{product?.status ?? 0} product</span>
+                <span aria-hidden="true"> · </span>
+              </li>
+              <li>
+                <span>{product?.authenticity ?? 0}% Authentic</span>
+                <span aria-hidden="true"> · </span>
+              </li>
+              <li>
+                <span>{product?.returnPolicy ?? 0} year return policy</span>
+              </li>
+              <li>
+                <span>{product?.warranty ?? 0} year warranty</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export default ListedProducts;
+```
+
 ---
 
 ### Chatwoot Configuration
