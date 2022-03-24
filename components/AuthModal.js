@@ -142,7 +142,6 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
             leaveTo="opacity-0 scale-95"
           >
             <div className="inline-block w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl sm:rounded-md max-w-md relative">
-              {/* Close icon */}
               <button
                 onClick={closeModal}
                 className="absolute top-2 right-2 shrink-0 p-1 rounded-md hover:bg-gray-100 transition focus:outline-none"
@@ -176,7 +175,6 @@ const AuthModal = ({ show = false, onClose = () => null }) => {
                   >
                     {showSignIn ? "Welcome back!" : "Create an account"}
                   </Dialog.Title>
-
                   {!showSignIn ? (
                     <Dialog.Description className="mt-2 text-gray-500 text-base text-center">
                       Please create an account to buy the products listed on

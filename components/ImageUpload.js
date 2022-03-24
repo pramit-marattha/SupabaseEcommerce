@@ -14,8 +14,7 @@ const ImageUpload = ({
   onChangePicture = () => null,
 }) => {
   const pictureRef = useRef();
-
-  const [image, setImage] = useState(initialImage);
+  const [image, setImage] = useState(initialImage ?? null);
   const [updatingPicture, setUpdatingPicture] = useState(false);
   const [pictureError, setPictureError] = useState(null);
 
