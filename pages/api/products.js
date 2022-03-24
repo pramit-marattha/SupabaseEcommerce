@@ -14,7 +14,8 @@ export default async function handler(req, res) {
         returnPolicy,
         warranty,
       } = req.body;
-      const product = await prisma.product.create({
+
+      const home = await prisma.product.create({
         data: {
           image,
           title,
@@ -26,9 +27,9 @@ export default async function handler(req, res) {
           warranty,
         },
       });
-      res.status(200).json(product);
+      res.status(200).json(home);
     } catch (e) {
-      res.status(500).json({ message: "Something went horribly wrong!!" });
+      res.status(500).json({ message: "Something went wrong" });
     }
   } else {
     res.setHeader("Allow", ["POST"]);

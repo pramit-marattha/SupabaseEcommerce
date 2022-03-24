@@ -3,7 +3,7 @@ import ListingForm from "@/components/ListingForm";
 import axios from "axios";
 
 const addProducts = () => {
-  const createProduct = () => (data) => axios.post("/api/products", data);
+  const createProduct = (data) => axios.post("/api/products", data);
 
   return (
     <Layout>
@@ -14,7 +14,7 @@ const addProducts = () => {
         <div className="mt-8">
           <ListingForm
             buttonText="Add Product"
-            redirectPath="/addProducts"
+            redirectPath="/products"
             onSubmit={createProduct}
           />
         </div>

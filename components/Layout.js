@@ -179,7 +179,6 @@ const Layout = ({ children = null }) => {
             {typeof children === "function" ? children(openModal) : children}
           </div>
         </main>
-
         <AuthModal show={showModal} onClose={closeModal} />
       </div>
     </>

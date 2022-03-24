@@ -14,13 +14,13 @@ datasource db {
 model Product {
   id          String   @id @default(cuid())
   image       String?
-  title       String
-  description String
-  status      String
-  price       Float
-  authenticity Int
-  returnPolicy Int
-  warranty     Int
+  title       String?
+  description String?
+  status      String?
+  price       Float?
+  authenticity Int?
+  returnPolicy Int?
+  warranty     Int?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
