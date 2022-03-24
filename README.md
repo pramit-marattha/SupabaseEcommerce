@@ -831,11 +831,11 @@ model Product {
   image       String?
   title       String
   description String
-  status      String
+  status      String?
   price       Float
-  authenticity        Int
-  returnPolicy        Int
-  warranty       Int
+  authenticity        Int?
+  returnPolicy        Int?
+  warranty       Int?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -933,7 +933,6 @@ After you have completed this process successfully, prisma will automatically ge
 ![FolderStructure](https://user-images.githubusercontent.com/37651620/159448032-a0259fb8-ed70-4275-9676-41f8b6fbc57f.png)
 
 ```sql
-
 -- CreateTable
 CREATE TABLE "Product" (
     "id" TEXT NOT NULL,
@@ -942,13 +941,15 @@ CREATE TABLE "Product" (
     "description" TEXT NOT NULL,
     "status" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
-    "authenticity" INTEGER NOT NULL,
-    "returnPolicy" INTEGER NOT NULL,
-    "warranty" INTEGER NOT NULL,
+    "authenticity" INTEGER,
+    "returnPolicy" INTEGER,
+    "warranty" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
+---
 ```
 
 Finally, check the Supabase dashboard to see if everything has been successfully synced.
@@ -1301,6 +1302,7 @@ import ImageUpload from "@/components/ImageUpload";
 const ListingSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
   description: Yup.string().trim().required(),
+  status: Yup.string().trim().required(),
   price: Yup.number().positive().integer().min(1).required(),
   authenticity: Yup.number().positive().integer().min(1).required(),
   returnPolicy: Yup.number().positive().integer().min(1).required(),
@@ -1346,6 +1348,7 @@ const ListingForm = ({
     image: "",
     title: "",
     description: "",
+    status: "",
     price: 0,
     authenticity: 1,
     returnPolicy: 1,
@@ -1378,6 +1381,14 @@ const ListingForm = ({
                 placeholder="Enter your product description...."
                 disabled={disabled}
                 rows={3}
+              />
+
+              <Input
+                name="status"
+                type="text"
+                label="Status(new/out-of-stock/used)"
+                placeholder="Enter your product status...."
+                disabled={disabled}
               />
 
               <Input
@@ -1416,12 +1427,7 @@ const ListingForm = ({
                 />
               </div>
             </div>
-            <div className="mb-6 max-w-full">
-              <ImageUpload
-                initialImage={{ src: image, alt: initialFormValues.title }}
-                onChangePicture={upload}
-              />
-            </div>
+
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -1434,6 +1440,12 @@ const ListingForm = ({
           </Form>
         )}
       </Formik>
+      <div className="mb-6 max-w-full">
+        <ImageUpload
+          initialImage={{ src: image, alt: initialFormValues.title }}
+          onChangePicture={upload}
+        />
+      </div>
     </div>
   );
 };
@@ -1443,6 +1455,7 @@ ListingForm.propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
+    status: PropTypes.string,
     price: PropTypes.number,
     authenticity: PropTypes.number,
     returnPolicy: PropTypes.number,
@@ -1476,15 +1489,13 @@ const ImageUpload = ({
   onChangePicture = () => null,
 }) => {
   const pictureRef = useRef();
-
-  const [image, setImage] = useState(initialImage);
+  const [image, setImage] = useState(initialImage ?? null);
   const [updatingPicture, setUpdatingPicture] = useState(false);
   const [pictureError, setPictureError] = useState(null);
 
   const handleOnChangePicture = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-
     const fileName = file?.name?.split(".")?.[0] ?? "New file";
 
     reader.addEventListener(
@@ -1637,6 +1648,7 @@ export default async function handler(req, res) {
       image,
       title,
       description,
+      status,
       price,
       authenticity,
       returnPolicy,
@@ -1664,6 +1676,7 @@ export default async function handler(req, res) {
       image,
       title,
       description,
+      status,
       price,
       authenticity,
       returnPolicy,
@@ -1675,6 +1688,7 @@ export default async function handler(req, res) {
         image,
         title,
         description,
+        status,
         price,
         authenticity,
         returnPolicy,
@@ -1704,25 +1718,28 @@ export default async function handler(req, res) {
         image,
         title,
         description,
+        status,
         price,
         authenticity,
         returnPolicy,
         warranty,
       } = req.body;
-      const home = await prisma.product.create({
+
+      const product = await prisma.product.create({
         data: {
           image,
           title,
           description,
+          status,
           price,
           authenticity,
           returnPolicy,
           warranty,
         },
       });
-      res.status(200).json(home);
+      res.status(200).json(product);
     } catch (e) {
-      res.status(500).json({ message: "Something went horribly wrong!!" });
+      res.status(500).json({ message: "Something went wrong" });
     }
   } else {
     res.setHeader("Allow", ["POST"]);
