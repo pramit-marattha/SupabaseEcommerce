@@ -1807,6 +1807,12 @@ It will automatically redirect you to the `/products` page and you should be abl
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159903167-ae9c4c76-aab3-4fff-880b-fb1a1e6a1d70.png)
 
+## Pre-rendering the pages
+
+We've used the `getServerSideProps` function to pre-render the `product` of our app using `Server-Side Rendering(SSR)`. Next.js, on the other hand, comes with a `built-in` pre-rendering method called `Static Generation (SSG)`.
+
+When a page uses Static Generation, the HTML for that page is generated during the build process. That means that when you run next build in production, the page HTML is generated. Each request will then be served with the same HTML. A `CDN` can cache it. You can statically generate pages with or without data using `Next.js`.
+
 ---
 
 ### Chatwoot Configuration
