@@ -14,7 +14,7 @@ const addProducts = () => {
         <div className="mt-8">
           <ListingForm
             buttonText="Add Product"
-            redirectPath="/products"
+            redirectPath="/addProducts"
             onSubmit={createProduct}
           />
         </div>

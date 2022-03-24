@@ -91,6 +91,7 @@ Card.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
+  status: PropTypes.string,
   authenticity: PropTypes.number,
   returnPolicy: PropTypes.number,
   warranty: PropTypes.number,

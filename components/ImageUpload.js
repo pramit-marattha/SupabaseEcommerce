@@ -22,7 +22,6 @@ const ImageUpload = ({
   const handleOnChangePicture = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-
     const fileName = file?.name?.split(".")?.[0] ?? "New file";
 
     reader.addEventListener(
