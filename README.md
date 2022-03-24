@@ -1799,6 +1799,14 @@ Now lets re-run the server again.
 
 After that head over to your browser and go to the `http://localhost:3000/addProducts` route and fill out all the product information and `Submit` it.
 
+![Demo](https://user-images.githubusercontent.com/37651620/159903073-4fd2e7ed-7317-4011-9700-9305fd8e875e.png)
+![Demo](https://user-images.githubusercontent.com/37651620/159903115-4347de95-d5e1-4747-8f45-acae6b99d969.png)
+![Demo](https://user-images.githubusercontent.com/37651620/159903149-710afad5-015b-4dc3-b3e6-8281a300820f.png)
+
+It will automatically redirect you to the `/products` page and you should be able to see the product that you just added.
+
+![Demo](https://user-images.githubusercontent.com/37651620/159903167-ae9c4c76-aab3-4fff-880b-fb1a1e6a1d70.png)
+
 ---
 
 ### Chatwoot Configuration
