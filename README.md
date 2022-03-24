@@ -1776,6 +1776,12 @@ const addProducts = () => {
 export default addProducts;
 ```
 
+Now lets re-run the server again.
+
+![image](https://user-images.githubusercontent.com/37651620/159643456-282dfb5e-2963-44f7-920e-1db0cc4cfa4e.png)
+
+After that head over to your browser and go to the `http://localhost:3000/addProducts` route and fill out all the product information and `Submit` it.
+
 ---
 
 ### Chatwoot Configuration

@@ -8,23 +8,25 @@ export default async function handler(req, res) {
         image,
         title,
         description,
+        status,
         price,
         authenticity,
         returnPolicy,
         warranty,
       } = req.body;
-      const home = await prisma.product.create({
+      const product = await prisma.product.create({
         data: {
           image,
           title,
           description,
+          status,
           price,
           authenticity,
           returnPolicy,
           warranty,
         },
       });
-      res.status(200).json(home);
+      res.status(200).json(product);
     } catch (e) {
       res.status(500).json({ message: "Something went horribly wrong!!" });
     }
