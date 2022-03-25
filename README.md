@@ -2106,6 +2106,22 @@ Now re-run the server and head back to the browser and open the application.
 
 ![Demo](https://user-images.githubusercontent.com/37651620/160119847-283970a1-f083-4427-ac80-535418353cc7.gif)
 
+## Implementing Incremental Static Generation(ISR)
+
+Now, if you create a new `product` listing in production and try to access its page, you'll see a `404 error` page instead. To see this in action, you need to build your app and run it as you would do in production because, in development, `getStaticProps` runs on every request. So, we have different behavior in development, which does not reflect what we would have in `production`. So simply, run the following command to serve a production build of your app but before you do so make sure to stop the server. If you
+
+```bash
+yarn build
+```
+
+![yarn build](https://user-images.githubusercontent.com/37651620/160135075-4666a8d8-5f74-471d-9b60-aea22b889896.png)
+
+```bash
+yarn start
+```
+
+![yarn start](https://user-images.githubusercontent.com/37651620/160135296-cfe7f272-b810-4b70-a56b-909dea7d05f5.png)
+
 ---
 
 ### Chatwoot Configuration
