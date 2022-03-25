@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import AuthModal from "./AuthModal";
+import LoginModal from "./LoginModal";
 import { Menu, Transition } from "@headlessui/react";
 import {
   HeartIcon,
@@ -20,12 +20,12 @@ const menuItems = [
   {
     label: "List a new home",
     icon: PlusIcon,
-    href: "/list",
+    href: "/addProducts",
   },
   {
     label: "My homes",
     icon: HomeIcon,
-    href: "/homes",
+    href: "/products",
   },
   {
     label: "Favorites",
@@ -76,9 +76,9 @@ const Layout = ({ children = null }) => {
                 </a>
               </Link>
               <div className="flex items-center space-x-4">
-                <Link href="/create">
+                <Link href="/addProducts">
                   <a className="ml-4 px-4 py-5 rounded-md bg-info text-primary hover:bg-primary hover:text-info focus:outline-none focus:ring-4 focus:ring-primaryfocus:ring-opacity-50  font-semibold transition">
-                    Register shop !
+                    Add product !
                   </a>
                 </Link>
                 {isLoadingUser ? (
@@ -179,7 +179,7 @@ const Layout = ({ children = null }) => {
             {typeof children === "function" ? children(openModal) : children}
           </div>
         </main>
-        <AuthModal show={showModal} onClose={closeModal} />
+        <LoginModal show={showModal} onClose={closeModal} />
       </div>
     </>
   );
