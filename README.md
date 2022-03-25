@@ -1866,6 +1866,7 @@ Now, go to the pages folder and make a new folder called `products`, then make a
 And finally paste the following code inside that file.
 
 ```jsx
+// pages/products/[id].jsx
 import Image from "next/image";
 import Layout from "@/components/Layout";
 
@@ -1883,28 +1884,37 @@ const ListedProducts = (product = null) => {
             />
           ) : null}
         </div>
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4 pt-10">
           <div>
             <h1 className="text-2xl font-semibold truncate">
               {product?.title ?? ""}
             </h1>
-            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
-            <ol className="inline-flex items-center space-x-1 text-gray-500">
+            <ol className="inline-flex items-center space-x-1 text-info">
               <li>
+                <span aria-hidden="true"> ( </span>
                 <span>{product?.status ?? 0} product</span>
-                <span aria-hidden="true"> · </span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
               </li>
               <li>
+                <span aria-hidden="true"> ( </span>
                 <span>{product?.authenticity ?? 0}% Authentic</span>
-                <span aria-hidden="true"> · </span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
               </li>
               <li>
+                <span aria-hidden="true"> ( </span>
                 <span>{product?.returnPolicy ?? 0} year return policy</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
               </li>
               <li>
+                <span aria-hidden="true"> ( </span>
                 <span>{product?.warranty ?? 0} year warranty</span>
+                <span aria-hidden="true"> ) </span>
               </li>
             </ol>
+            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
           </div>
         </div>
       </div>
@@ -1914,6 +1924,187 @@ const ListedProducts = (product = null) => {
 
 export default ListedProducts;
 ```
+
+Now, let's actually provide the lists of paths of the pages that we want to statically generate, and let's actually fetch some data and match it with the numbers of paths. To do so, we must provide the paths to Next.js that we want to pre-render at build time.This function should return all the paths of the pages to pre-render at build time, along with the corresponding `id` value in the returned object's params property. So for that, we'll be using Prisma to retrieve the IDs for all of the `products` residing on our database.
+
+```js
+// pages/products/[id].jsx
+import Image from "next/image";
+import Layout from "@/components/Layout";
+import { PrismaClient } from "@prisma/client";
+// Instantiate Prisma Client
+const prisma = new PrismaClient();
+
+const ListedProducts = (product = null) => {
+  return (
+    <Layout>
+      <div className="max-w-screen-lg mx-auto">
+        <div className="mt-6 relative aspect-video bg-gray-400 rounded-lg shadow-md overflow-hidden">
+          {product?.image ? (
+            <Image
+              src={product.image}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+            />
+          ) : null}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4 pt-10">
+          <div>
+            <h1 className="text-2xl font-semibold truncate">
+              {product?.title ?? ""}
+            </h1>
+            <ol className="inline-flex items-center space-x-1 text-info">
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.status ?? 0} product</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.authenticity ?? 0}% Authentic</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.returnPolicy ?? 0} year return policy</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.warranty ?? 0} year warranty</span>
+                <span aria-hidden="true"> ) </span>
+              </li>
+            </ol>
+            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export async function getStaticPaths() {
+  const products = await prisma.product.findMany({
+    select: { id: true },
+  });
+
+  return {
+    paths: products.map((product) => ({
+      params: { id: product.id },
+    })),
+    fallback: false,
+  };
+}
+
+export default ListedProducts;
+```
+
+The `getStaticProps` function must now be implemented. So, let's get started. As you can see, the first thing we do is use the Prisma findUnique function with the id retrieved from the query params object to get the data of the requested route. Then, if the corresponding home is found in the database, we return it to the `ListedProducts` React component as a prop. If the requested `products` cannot be found, we return an object to tell Next.js to redirect the user to our app's '`products'` page.
+
+```js
+// pages/products/[id].jsx
+import Image from "next/image";
+import Layout from "@/components/Layout";
+import { PrismaClient } from "@prisma/client";
+// Instantiate Prisma Client
+const prisma = new PrismaClient();
+
+const ListedProducts = (product = null) => {
+  return (
+    <Layout>
+      <div className="max-w-screen-lg mx-auto">
+        <div className="mt-6 relative aspect-video bg-gray-400 rounded-lg shadow-md overflow-hidden">
+          {product?.image ? (
+            <Image
+              src={product.image}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+            />
+          ) : null}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4 pt-10">
+          <div>
+            <h1 className="text-2xl font-semibold truncate">
+              {product?.title ?? ""}
+            </h1>
+            <ol className="inline-flex items-center space-x-1 text-info">
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.status ?? 0} product</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.authenticity ?? 0}% Authentic</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.returnPolicy ?? 0} year return policy</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.warranty ?? 0} year warranty</span>
+                <span aria-hidden="true"> ) </span>
+              </li>
+            </ol>
+            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export async function getStaticPaths() {
+  const products = await prisma.product.findMany({
+    select: { id: true },
+  });
+
+  return {
+    paths: products.map((product) => ({
+      params: { id: product.id },
+    })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const product = await prisma.product.findUnique({
+    where: { id: params.id },
+  });
+
+  if (product) {
+    return {
+      props: JSON.parse(JSON.stringify(product)),
+    };
+  }
+
+  return {
+    redirect: {
+      destination: "/products",
+      permanent: false,
+    },
+  };
+}
+
+export default ListedProducts;
+```
+
+Now re-run the server and head back to the browser and open the application.
+
+![Demo](https://user-images.githubusercontent.com/37651620/160119909-00de7d20-ea1c-448e-b674-b9a752f2308b.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160119847-283970a1-f083-4427-ac80-535418353cc7.gif)
 
 ---
 
