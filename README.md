@@ -2100,6 +2100,12 @@ export async function getStaticProps({ params }) {
 export default ListedProducts;
 ```
 
+Now re-run the server and head back to the browser and open the application.
+
+![Demo](https://user-images.githubusercontent.com/37651620/160119909-00de7d20-ea1c-448e-b674-b9a752f2308b.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160119847-283970a1-f083-4427-ac80-535418353cc7.gif)
+
 ---
 
 ### Chatwoot Configuration
