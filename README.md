@@ -2108,7 +2108,7 @@ Now re-run the server and head back to the browser and open the application.
 
 ## Implementing Incremental Static Generation(ISR)
 
-Now, if you create a new `product` listing in production and try to access its page, you'll see a `404 error` page instead. To see this in action, you need to build your app and run it as you would do in production because, in development, `getStaticProps` runs on every request. So, we have different behavior in development, which does not reflect what we would have in `production`. So simply, run the following command to serve a production build of your app but before you do so make sure to stop the server. If you
+If you try to access a page for a new `product` listing in production, you'll get a `404 error page` instead. To see this in action, build your app and run it as you would in production, because `getStaticProps` runs on every request in development. So, we have different behavior in development that differs from what we would see in `production`. To serve a production build of your application, simply fire up the following command, but make sure to stop the server first.
 
 ```bash
 yarn build
@@ -2121,6 +2121,254 @@ yarn start
 ```
 
 ![yarn start](https://user-images.githubusercontent.com/37651620/160135296-cfe7f272-b810-4b70-a56b-909dea7d05f5.png)
+
+The main reason for the `404 page` is that we used Static Generation to define the routes `/products/[id].js`, and we only generated pages for the products that were in our database at the time. In other words, after this build process, none of the products our users create will generate a new page. That is why we have a `404 page` instead, because the page simply does not exist at all.To fix this, we'll need to define a fallback that will allow us to continue building pages lazily at runtime.
+
+```js
+// pages/products/[id].js
+import Image from "next/image";
+import Layout from "@/components/Layout";
+import { PrismaClient } from "@prisma/client";
+// Instantiate Prisma Client
+const prisma = new PrismaClient();
+
+const ListedProducts = (product = null) => {
+  return (
+    <Layout>
+      <div className="max-w-screen-lg mx-auto">
+        <div className="mt-6 relative aspect-video bg-gray-400 rounded-lg shadow-md overflow-hidden">
+          {product?.image ? (
+            <Image
+              src={product.image}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+            />
+          ) : null}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4 pt-10">
+          <div>
+            <h1 className="text-2xl font-semibold truncate">
+              {product?.title ?? ""}
+            </h1>
+            <ol className="inline-flex items-center space-x-1 text-info">
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.status ?? 0} product</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.authenticity ?? 0}% Authentic</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.returnPolicy ?? 0} year return policy</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.warranty ?? 0} year warranty</span>
+                <span aria-hidden="true"> ) </span>
+              </li>
+            </ol>
+            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export async function getStaticPaths() {
+  const products = await prisma.product.findMany({
+    select: { id: true },
+  });
+
+  return {
+    paths: products.map((product) => ({
+      params: { id: product.id },
+    })),
+    // ----- SET to TRUE ------
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const product = await prisma.product.findUnique({
+    where: { id: params.id },
+  });
+
+  if (product) {
+    return {
+      props: JSON.parse(JSON.stringify(product)),
+    };
+  }
+
+  return {
+    redirect: {
+      destination: "/products",
+      permanent: false,
+    },
+  };
+}
+
+export default ListedProducts;
+```
+
+Now that we've set the `fallback` to `true`, the `404` page will no longer be displayed.
+
+![Fallback](https://user-images.githubusercontent.com/37651620/160141955-14e4651c-bfc4-4dc2-8418-53d5b1639bce.gif)
+
+It's also possible to detect whether the fallback version of the page is being rendered with the `Next.js router` and, if so, conditionally render something else, such as a loading spinner, while we wait for the props to get loaded.
+
+```js
+const router = useRouter();
+
+if (router.isFallback) {
+  return (
+    <svg
+      role="status"
+      class="mr-2 w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-success"
+      viewBox="0 0 100 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor"
+      />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill"
+      />
+    </svg>
+  );
+}
+```
+
+Finally your `[id].js` code should look something like this.
+
+```jsx
+// pages/products/[id].js
+import Image from "next/image";
+import Layout from "@/components/Layout";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+const ListedProducts = (product = null) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <svg
+        role="status"
+        class="mr-2 w-14 h-14 text-gray-200 animate-spin dark:text-gray-600 fill-success"
+        viewBox="0 0 100 101"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+          fill="currentColor"
+        />
+        <path
+          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+          fill="currentFill"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <Layout>
+      <div className="max-w-screen-lg mx-auto">
+        <div className="mt-6 relative aspect-video bg-gray-400 rounded-lg shadow-md overflow-hidden">
+          {product?.image ? (
+            <Image
+              src={product.image}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+            />
+          ) : null}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:space-x-4 space-y-4 pt-10">
+          <div>
+            <h1 className="text-2xl font-semibold truncate">
+              {product?.title ?? ""}
+            </h1>
+            <ol className="inline-flex items-center space-x-1 text-info">
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.status ?? 0} product</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.authenticity ?? 0}% Authentic</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.returnPolicy ?? 0} year return policy</span>
+                <span aria-hidden="true"> ) </span>
+                <span aria-hidden="true"> - </span>
+              </li>
+              <li>
+                <span aria-hidden="true"> ( </span>
+                <span>{product?.warranty ?? 0} year warranty</span>
+                <span aria-hidden="true"> ) </span>
+              </li>
+            </ol>
+            <p className="mt-8 text-lg">{product?.description ?? ""}</p>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export async function getStaticPaths() {
+  const products = await prisma.product.findMany({
+    select: { id: true },
+  });
+
+  return {
+    paths: products.map((product) => ({
+      params: { id: product.id },
+    })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const product = await prisma.product.findUnique({
+    where: { id: params.id },
+  });
+
+  if (product) {
+    return {
+      props: JSON.parse(JSON.stringify(product)),
+    };
+  }
+
+  return {
+    redirect: {
+      destination: "/products",
+      permanent: false,
+    },
+  };
+}
+
+export default ListedProducts;
+```
 
 ---
 
