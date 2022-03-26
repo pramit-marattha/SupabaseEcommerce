@@ -133,7 +133,7 @@ const LoginModal = ({ show = false, onClose = () => null }) => {
                   <div className="flex justify-center">
                     <Link href="/">
                       <a className="flex items-center space-x-1">
-                        <img
+                        <Image
                           className="shrink-0 w-24 h-24 text-primary"
                           src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png"
                           alt="Logo"

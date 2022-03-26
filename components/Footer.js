@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -56,6 +57,7 @@ const Footer = () => {
                 href="#"
                 className="flex justify-center items-center text-blue-400 hover:text-gray-900 bg-blue-100 hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out"
                 aria-label="Twitter"
+                passHref
               >
                 <svg
                   className="w-8 h-8 fill-current "
@@ -71,6 +73,7 @@ const Footer = () => {
                 href="#"
                 className="flex justify-center items-center text-white hover:text-gray-900 bg-black hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out"
                 aria-label="Github"
+                passHref
               >
                 <svg
                   className="w-8 h-8 fill-current"
@@ -84,11 +87,17 @@ const Footer = () => {
           </ul>
 
           <div className="flex-shrink-0 mr-2">
-            <Link href="/" className="block" aria-label="SuperbaseEcommerce">
-              <img
+            <Link
+              href="/"
+              className="block"
+              aria-label="SuperbaseEcommerce"
+              passHref
+            >
+              <Image
                 className="object-cover h-20 w-full"
                 src="https://user-images.githubusercontent.com/37651620/159121520-fe42bbf1-a2af-4baf-bdd8-7efad8523202.png"
                 alt="SupabaseEcommerce"
+                passHref
               />
             </Link>
           </div>

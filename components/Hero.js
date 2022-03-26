@@ -2,6 +2,7 @@ import React from "react";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -29,7 +30,7 @@ const Hero = () => {
         animate={{ opacity: 1, translateY: 0 }}
         transition={{ duration: 0.8, translateY: 0 }}
       >
-        <img
+        <Image
           alt="hero-img"
           src="./assets/shop.svg"
           className="mx-auto object-cover shadow rounded-tr-extraLarge rounded-bl-extraLarge w-full h-96 sm:h-112 md:h-120"

@@ -2970,6 +2970,20 @@ Now that you've completed the chatwoot integration, your finished project should
 
 ![Demo](https://user-images.githubusercontent.com/37651620/159338798-54c1f63b-ad86-4a7e-a2d4-587c43c98365.png)
 
+## Deploying to netlify
+
+![Demo](https://user-images.githubusercontent.com/37651620/160248728-38468ed9-241f-4ff3-ba25-45ee73725551.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160248732-24493114-228d-4217-b195-393a530bf858.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160248905-77307916-5989-46a3-81d1-3624979421a9.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160248911-5811b5f6-dd33-4fbb-acd2-184e258a5a1b.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160248916-532e28de-66c8-4994-8a40-706715c48cbd.png)
+
+![Demo](https://user-images.githubusercontent.com/37651620/160248990-2216e8d3-f47a-4b6f-a989-79fe64f3493e.png)
+
 # Conclusion
 
 Congratulations 🎉 🎉!!. You've successfully created a fullstack application with Next.js, Supabase, Prisma and chatwoot.This article may have been entertaining as well as instructive in terms of creating a fully fgledged working ecommerce site from absolute scratch.

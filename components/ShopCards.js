@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ShopCards = () => {
   const [tab, setTab] = useState(1);
@@ -16,6 +17,7 @@ const ShopCards = () => {
   useEffect(() => {
     heightFix();
   }, [tab]);
+
   return (
     <section className="relative">
       <div
@@ -41,7 +43,7 @@ const ShopCards = () => {
                     animate={{ opacity: 1, translateY: 0 }}
                     transition={{ duration: 0.8, translateY: 0 }}
                   >
-                    <img
+                    <Image
                       alt="hero-img"
                       src="./assets/webShop.svg"
                       className="mx-auto object-cover shadow rounded-tr-extraLarge rounded-bl-extraLarge w-full h-96 sm:h-112 md:h-120"
