@@ -149,10 +149,10 @@
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz"
   "version" "1.1.0"
 
-"@supabase/functions-js@^1.2.0":
-  "integrity" "sha512-vT/dEuwY7occ5Upuev0vuGCAo/cVltbv+8mOKugA5Lsf9W5S0PlXy4di/cGF6ryvsQfYXr1ebEWNlgKgGUOCtA=="
-  "resolved" "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-1.2.0.tgz"
-  "version" "1.2.0"
+"@supabase/functions-js@^1.2.2":
+  "integrity" "sha512-OgeI84eK02pyYa7uA7gzZri6wyPEB2jOu1AEcZKJa328Jd6LlX9VPfPZZ86ahWzKEDmvBrUUXJAUihGuqWcFeQ=="
+  "resolved" "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-1.2.3.tgz"
+  "version" "1.2.3"
   dependencies:
     "cross-fetch" "^3.1.5"
 
@@ -188,12 +188,12 @@
   dependencies:
     "cross-fetch" "^3.1.0"
 
-"@supabase/supabase-js@^1.32.1":
-  "integrity" "sha512-GAm7MRcCzrcbzGELHrpU0zHQm58ZJ+b7RBLkJxC7MzdAsNDJv/F7921f4WDbKtLn4cASGImJR2xElLiXK5NqAA=="
-  "resolved" "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-1.32.1.tgz"
-  "version" "1.32.1"
+"@supabase/supabase-js@^1.32.2":
+  "integrity" "sha512-cM9CHG2vLUJzzOj8Cers36BYTb5c1v7HeHbtOXkPUh76oTO7w2d+jtvqZBzR72Nz7ykYmCVw5YccHR2FuxoLHQ=="
+  "resolved" "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-1.32.2.tgz"
+  "version" "1.32.2"
   dependencies:
-    "@supabase/functions-js" "^1.2.0"
+    "@supabase/functions-js" "^1.2.2"
     "@supabase/gotrue-js" "^1.22.8"
     "@supabase/postgrest-js" "^0.37.1"
     "@supabase/realtime-js" "^1.4.0"
@@ -444,6 +444,11 @@
 "balanced-match@^1.0.0":
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
+  "version" "1.0.2"
+
+"base64-arraybuffer@^1.0.2":
+  "integrity" "sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ=="
+  "resolved" "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-1.0.2.tgz"
   "version" "1.0.2"
 
 "binary-extensions@^2.0.0":
@@ -1638,15 +1643,20 @@
   "resolved" "https://registry.npmjs.org/nanoclone/-/nanoclone-0.2.1.tgz"
   "version" "0.2.1"
 
-"nanoid@^3.1.30", "nanoid@^3.2.0":
-  "integrity" "sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA=="
-  "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.2.0.tgz"
-  "version" "3.2.0"
+"nanoid@^3.1.30", "nanoid@^3.2.0", "nanoid@^3.3.1":
+  "integrity" "sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw=="
+  "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.1.tgz"
+  "version" "3.3.1"
 
 "natural-compare@^1.4.0":
   "integrity" "sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc="
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
+
+"next-absolute-url@^1.2.2":
+  "integrity" "sha512-Z2+LZXQTthhw2je9u4eq8QWXxXd57a6b54x9exBfQX4Dct6YxaMjcXZWNLHd9AOlCue84EsMpdSGP7wACqUnPg=="
+  "resolved" "https://registry.npmjs.org/next-absolute-url/-/next-absolute-url-1.2.2.tgz"
+  "version" "1.2.2"
 
 "next-tick@^1.1.0":
   "integrity" "sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ=="

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Layout from "@/components/Layout";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
+import { useRouter } from "next/router";
 
 const ListedProducts = (product = null) => {
   const router = useRouter();

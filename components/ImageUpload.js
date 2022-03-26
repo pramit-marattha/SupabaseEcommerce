@@ -123,3 +123,11 @@ ImageUpload.propTypes = {
 };
 
 export default ImageUpload;
+
+export async function getInitialProps({ req }) {
+  const { origin } = absoluteUrl(req, req.headers.host);
+  console.log("Requested URL ->", origin);
+  // (or) other way
+  const host = absoluteUrl(req, req.headers.host);
+  console.log("Requested URL ->", host.origin);
+}
