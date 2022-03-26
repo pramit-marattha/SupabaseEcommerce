@@ -2482,6 +2482,67 @@ We must define some security rules to be able to deal with our image files insid
 
 ![Security Rules](https://user-images.githubusercontent.com/37651620/160238595-7be56c15-4a45-4af5-9e02-1bfe13da601a.png)
 
+## Upload a file from application
+
+Let's keep going and add the ability for our application to upload and store our products images. Let's begin by adding a new `API endpoint` to your project's `pages/api/productsImage.js` directory.
+
+```js
+// pages/api/productsImage.js
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method :${req.method}: not supported.` });
+  }
+}
+```
+
+Now, let's use Supabase JS Client for uploading the image to our Supabase Storage Bucket.To do so, you need to install `@supabase/supabase-js` client library.
+
+```shell
+npm i @supabase/supabase-js
+```
+
+![Supbase client](https://user-images.githubusercontent.com/37651620/160239578-b753f67d-d04f-4cca-9c98-ec498077bff8.png)
+
+Then, inside your `pages/api/productsImage.js file`, import it and create a new Supabase Client.
+
+```jsx
+// pages/api/productsImage.js
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.SUPABASE_API_URL,
+  process.env.SUPABASE_API_KEY
+);
+export default async function handler(req, res) {
+  if (req.method === "POST") {
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res
+      .status(405)
+      .json({ message: `HTTP method :${req.method}: not supported.` });
+  }
+}
+```
+
+After that, go to the Supabase dashboard and click on `Setting > API`.
+
+![API key](https://user-images.githubusercontent.com/37651620/160244953-5476732c-8dd2-44ec-a8ef-545e0da80202.png)
+
+and add all those API keys to your `env` file.
+
+```js
+SUPABASE_API_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6a2phdGJscXpqeW5yZWJ-";
+SUPABASE_API_URL = "https://ezkjatblqzjynrebjkpq.supabase.co";
+SUPABASE_STORAGE_BUCKET = "supabase-ecommerce";
+```
+
+
+
 ---
 
 ### Chatwoot Configuration
