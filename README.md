@@ -2972,17 +2972,33 @@ Now that you've completed the chatwoot integration, your finished project should
 
 ## Deploying to netlify
 
+First, sign in to netlify or create an account if you don't already have one.
+
 ![Demo](https://user-images.githubusercontent.com/37651620/160248728-38468ed9-241f-4ff3-ba25-45ee73725551.png)
+
+You can also log in using a variety of other platforms.
 
 ![Demo](https://user-images.githubusercontent.com/37651620/160248732-24493114-228d-4217-b195-393a530bf858.png)
 
+Import your project from github now.
+
 ![Demo](https://user-images.githubusercontent.com/37651620/160248905-77307916-5989-46a3-81d1-3624979421a9.png)
+
+Sign-in and connect to your GitHub account.
 
 ![Demo](https://user-images.githubusercontent.com/37651620/160248911-5811b5f6-dd33-4fbb-acd2-184e258a5a1b.png)
 
+Look for your project on Github.
+
 ![Demo](https://user-images.githubusercontent.com/37651620/160248916-532e28de-66c8-4994-8a40-706715c48cbd.png)
 
+Add all of the configuration, and don't forget to include the environment variables.
+
 ![Demo](https://user-images.githubusercontent.com/37651620/160248990-2216e8d3-f47a-4b6f-a989-79fe64f3493e.png)
+
+Yayyy!! 🎉 🎉 Its deployed on Netlify!
+
+![Demoo](https://user-images.githubusercontent.com/37651620/160249677-65e73965-77b8-45c6-b7fd-afb1a06e4c1a.png)
 
 # Conclusion
 
