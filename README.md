@@ -2448,6 +2448,40 @@ After that, restart the server, and you should see images.
 ![Demo](https://user-images.githubusercontent.com/37651620/160236563-161dcd5a-f664-4868-ba20-9cbca4652f43.png)
 ![Demo](https://user-images.githubusercontent.com/37651620/160236579-6f80c2de-accd-4d30-a35b-19a990ca5e48.png)
 
+### Security Rules
+
+We must define some security rules to be able to deal with our image files inside our bucket using the `Supabase API`. So, add the security rules from our `Supabase dashboard`.
+
+- **Step 1**: Head over to the `Storage` section and go to the `Policies` section.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238474-ad39e70f-feff-4bfa-a559-b57cc00a0ac4.png)
+
+- **Step 2**: Create a `New Policy`.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238482-416094e3-5ecf-441f-a8f1-619425257c98.png)
+
+- **Step 3**: Select `Get started quickly`.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238492-b814238e-1723-40ca-bcfc-5b97979974d0.png)
+
+- **Step 4**: Use `Allow access to JPG images in a public folder to anonymous users` this template.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238518-fc9066f6-1031-4f95-90bf-74eda3b7b767.png)
+
+- **Step 5**: Give the `Policy Name` select all the `Operation` and give `bucket_id` and Hit `Review`.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238559-7b2ffdd1-948d-46f9-903a-1e84297d875d.png)
+
+- **Step 6**: `Review` the policy and `save` it.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238568-fd77e15b-4265-499e-a89c-4daaf33a8f07.png)
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238578-e542545d-03e9-4072-8466-f3a2eb56c41d.png)
+
+- **Step 8**: Finally you've successfully created a `Storage Policy`.
+
+![Security Rules](https://user-images.githubusercontent.com/37651620/160238595-7be56c15-4a45-4af5-9e02-1bfe13da601a.png)
+
 ---
 
 ### Chatwoot Configuration
