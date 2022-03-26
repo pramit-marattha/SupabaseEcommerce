@@ -2396,12 +2396,61 @@ Next, give the bucket a name; for now, we'll call it `supabase-ecommerce`, and r
 
 ![Storage](https://user-images.githubusercontent.com/37651620/160154342-74a45f3b-eb85-487d-8b58-5a997477aa17.png)
 
+### Manually uploading image on database
 
+- **Step 1**: Head over to the supabase `Storage` and upload the `products` images.
 
+![Boxing](https://user-images.githubusercontent.com/37651620/160235447-6b9deb1c-0bf6-4a4c-97dc-2732dd220cf4.png)
+![Boxing](https://user-images.githubusercontent.com/37651620/160235455-c39b17f7-8d61-4ddb-ac19-2977afe0cbc2.png)
+
+![Action Camera](https://user-images.githubusercontent.com/37651620/160235495-a605f3b4-2505-4284-bfba-14f9c63f533c.png)
+![Action Camera](https://user-images.githubusercontent.com/37651620/160235505-34065298-562a-4d40-9aae-d7543087909d.png)
+
+![Jwellery](https://user-images.githubusercontent.com/37651620/160235537-ebc2cb10-9d1a-4311-b208-b340d0627d1c.png)
+![Jwellery](https://user-images.githubusercontent.com/37651620/160235568-7ae8f3cc-6d6a-48a7-b58d-23be839eec87.png)
+
+- **Step 2**: Select the product image and copy the `image url`
+
+![Boxing](https://user-images.githubusercontent.com/37651620/160235649-554c8f10-64d3-4ad1-a50d-f3e0faa238fb.png)
+
+![Camera](https://user-images.githubusercontent.com/37651620/160235666-52bdedb1-5740-4e1b-a448-9c41c3abd9a7.png)
+
+![Jwellery](https://user-images.githubusercontent.com/37651620/160235704-d22b5981-5c7a-4615-b630-19322c36d803.png)
+
+- **Step 3**: Open up the `Prisma Studio` by typing `npx prisma studio` inside the command line terminal.
+
+![Prisma Studio](https://user-images.githubusercontent.com/37651620/160236083-fd80ccb4-f7ac-4b4a-9576-ad4f754a9917.png)
+
+![Prisma](https://user-images.githubusercontent.com/37651620/160236136-f6b62776-16c9-4cbc-b9d6-f858ea82157a.png)
+
+- **Step 3**: Now, paste all of the image urls you copied in 'Step 2' inside the image row.
+
+![Image URL](https://user-images.githubusercontent.com/37651620/160236233-9ecfde2d-f335-4cb1-a460-d8c2ae3ea79c.png)
+
+Go back to the application and refresh the page now that you've added all of the `image urls`. You may encounter the error shown below.
+
+![Image URL](https://user-images.githubusercontent.com/37651620/160236310-551486ec-1355-4025-8a0f-af47e51b5ddb.png)
+
+Copy the hostname of your file URL and paste it into the `images.domains` config in the `next.config.js` file to fix the error.
+
+```js
+module.exports = {
+  reactStrictMode: true,
+  images: {
+    domains: ["ezkjatblqzjynrebjkpq.supabase.co"],
+  },
+};
+```
+
+After that, restart the server, and you should see images.
+
+![Demo](https://user-images.githubusercontent.com/37651620/160236559-21b8be68-1042-476f-bc9a-8c0aec3b1930.png)
+![Demo](https://user-images.githubusercontent.com/37651620/160236563-161dcd5a-f664-4868-ba20-9cbca4652f43.png)
+![Demo](https://user-images.githubusercontent.com/37651620/160236579-6f80c2de-accd-4d30-a35b-19a990ca5e48.png)
 
 ---
 
-### Chatwoot Configurationj
+### Chatwoot Configuration
 
 #### Chatwoot configuration on Heroku
 
