@@ -2370,9 +2370,38 @@ export async function getStaticProps({ params }) {
 export default ListedProducts;
 ```
 
+## Uploading image in Supabase
+
+We've created product records up to this point, but without any images because we haven't yet implemented aby media storage. We'll use Supabase Storage, a fantastic service from Supabase, to store and use media files in our project.
+
+### Creating a bucket in supabase
+
+Buckets are distinct containers for files and folders. It is like a `super folders`. Generally you would create distinct buckets for different Security and Access Rules. For example, you might keep all public files in a `public` bucket, and other files that require logged-in access in a `restricted` bucket.
+
+To create a bucket in Supabase, first navigate to the `storage` section of the dashboard.
+
+![Storage](https://user-images.githubusercontent.com/37651620/160153539-6c318c5c-0dee-4da2-9916-8f8801961afa.gif)
+
+After that, select `Create Bucket` button.
+
+![Storage](https://user-images.githubusercontent.com/37651620/160153764-f0f71f25-a3e0-44cf-90ba-f966397a18be.png)
+
+Next, give the bucket a name; for now, we'll call it `supabase-ecommerce`, and remember to make it public and click on that `Create Button` button.
+
+![Storage](https://user-images.githubusercontent.com/37651620/160154077-c0fe180d-2571-4497-8c58-2ae23e89e660.png)
+
+![Storage](https://user-images.githubusercontent.com/37651620/160154148-e235236a-732e-4008-bb2a-6aa8b9ba592f.png)
+
+![Storage](https://user-images.githubusercontent.com/37651620/160154311-35f95ab3-ce34-43af-a0f4-dc8541c4de93.png)
+
+![Storage](https://user-images.githubusercontent.com/37651620/160154342-74a45f3b-eb85-487d-8b58-5a997477aa17.png)
+
+
+
+
 ---
 
-### Chatwoot Configuration
+### Chatwoot Configurationj
 
 #### Chatwoot configuration on Heroku
 
