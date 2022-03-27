@@ -95,7 +95,7 @@ const Footer = () => {
             >
               <Image
                 className="object-cover h-20 w-full"
-                src="../public/assets/footerLogo.png"
+                src="./assets/footerLogo.png"
                 alt="SupabaseEcommerce"
                 passHref
               />
