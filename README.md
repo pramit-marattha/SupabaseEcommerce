@@ -72,7 +72,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import AuthModal from "./AuthModal";
+import SigninPopupModal from "./SigninPopupModal";
 import { Menu, Transition } from "@headlessui/react";
 import {
   HeartIcon,
@@ -248,7 +248,7 @@ const Layout = ({ children = null }) => {
           </div>
         </main>
 
-        <AuthModal show={showModal} onClose={closeModal} />
+        <SigninPopupModal show={showModal} onClose={closeModal} />
       </div>
     </>
   );
