@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import classNames from "classnames";
 import { CloudUploadIcon } from "@heroicons/react/outline";
 
-const ImageUpload = ({
+const AddProductImage = ({
   label = "Image",
   initialImage = null,
   objectFit = "cover",
@@ -14,15 +14,13 @@ const ImageUpload = ({
   onChangePicture = () => null,
 }) => {
   const pictureRef = useRef();
-
-  const [image, setImage] = useState(initialImage);
+  const [image, setImage] = useState(initialImage ?? null);
   const [updatingPicture, setUpdatingPicture] = useState(false);
   const [pictureError, setPictureError] = useState(null);
 
   const handleOnChangePicture = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-
     const fileName = file?.name?.split(".")?.[0] ?? "New file";
 
     reader.addEventListener(
@@ -112,7 +110,7 @@ const ImageUpload = ({
   );
 };
 
-ImageUpload.propTypes = {
+AddProductImage.propTypes = {
   label: PropTypes.string,
   initialImage: PropTypes.shape({
     src: PropTypes.string,
@@ -124,4 +122,12 @@ ImageUpload.propTypes = {
   onChangePicture: PropTypes.func,
 };
 
-export default ImageUpload;
+export default AddProductImage;
+
+export async function getInitialProps({ req }) {
+  const { origin } = absoluteUrl(req, req.headers.host);
+  console.log("Requested URL ->", origin);
+  // (or) other way
+  const host = absoluteUrl(req, req.headers.host);
+  console.log("Requested URL ->", host.origin);
+}
