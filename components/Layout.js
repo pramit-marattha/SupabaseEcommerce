@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import LoginModal from "./SigninPopupModal";
+import SigninPopupModal from "./SigninPopupModal";
 import { Menu, Transition } from "@headlessui/react";
 
 import {
@@ -175,7 +175,7 @@ const Layout = ({ children = null }) => {
             {typeof children === "function" ? children(openModal) : children}
           </div>
         </main>
-        <LoginModal show={showModal} onClose={closeModal} />
+        <SigninPopupModal show={showModal} onClose={closeModal} />
       </div>
     </>
   );

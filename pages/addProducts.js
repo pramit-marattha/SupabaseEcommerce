@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import ListingForm from "@/components/ProductList";
+import ProductList from "@/components/ProductList";
 import axios from "axios";
 
 const addProducts = () => {
@@ -12,7 +12,7 @@ const addProducts = () => {
           Add your Products
         </h1>
         <div className="mt-8">
-          <ListingForm
+          <ProductList
             buttonText="Add Product"
             redirectPath="/products"
             onSubmit={createProduct}
