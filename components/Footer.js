@@ -86,13 +86,7 @@ const Footer = () => {
             </li>
           </ul>
 
-          <div className="flex-shrink-0 mr-2">
-            <Image
-              className="object-cover h-20 w-full"
-              src="./assets/footerLogo.png"
-              alt="SupabaseEcommerce"
-            />
-          </div>
+          <div className="flex-shrink-0 mr-2"></div>
         </div>
       </div>
     </footer>
