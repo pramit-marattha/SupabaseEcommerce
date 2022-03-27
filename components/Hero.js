@@ -3,6 +3,7 @@ import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import shopsvg from "./assets/shop.svg";
 
 const Hero = () => {
   return (
@@ -32,7 +33,7 @@ const Hero = () => {
       >
         <Image
           alt="hero-img"
-          src="./assets/shop.svg"
+          src={shopsvg}
           className="mx-auto object-cover shadow rounded-tr-extraLarge rounded-bl-extraLarge w-full h-96 sm:h-112 md:h-120"
         />
       </motion.div>
