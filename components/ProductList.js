@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 import { Formik, Form } from "formik";
 import Input from "@/components/Input";
-import ImageUpload from "@/components/AddProductImage";
+import AddProductImage from "@/components/AddProductImage";
 import axios from "axios";
 
 const ProductSchema = Yup.object().shape({
@@ -162,7 +162,7 @@ const ProductList = ({
         )}
       </Formik>
       <div className="mb-6 max-w-full">
-        <ImageUpload
+        <AddProductImage
           initialImage={{ src: image, alt: initialFormValues.title }}
           onChangePicture={upload}
         />
