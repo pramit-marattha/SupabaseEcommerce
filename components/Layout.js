@@ -67,7 +67,7 @@ const Layout = ({ children = null }) => {
                 <a className="flex items-center space-x-1">
                   <Image
                     className="shrink-0 w-24 h-24 text-primary"
-                    src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png"
+                    src="../public/assets/logo.png"
                     alt="Logo"
                   />
                   <span className="text-2xl font-semibold tracking-wide text-white">

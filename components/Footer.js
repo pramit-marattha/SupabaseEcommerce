@@ -95,7 +95,7 @@ const Footer = () => {
             >
               <Image
                 className="object-cover h-20 w-full"
-                src="https://user-images.githubusercontent.com/37651620/159121520-fe42bbf1-a2af-4baf-bdd8-7efad8523202.png"
+                src="../public/assets/footerLogo.png"
                 alt="SupabaseEcommerce"
                 passHref
               />
