@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import webShopsvg from "./assets/webShop.svg";
 
 const ShopCards = () => {
   const [tab, setTab] = useState(1);
@@ -45,7 +46,7 @@ const ShopCards = () => {
                   >
                     <Image
                       alt="hero-img"
-                      src="./assets/webShop.svg"
+                      src={webShopsvg}
                       className="mx-auto object-cover shadow rounded-tr-extraLarge rounded-bl-extraLarge w-full h-96 sm:h-112 md:h-120"
                     />
                   </motion.div>
