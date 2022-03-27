@@ -92,14 +92,7 @@ const Footer = () => {
               className="block"
               aria-label="SuperbaseEcommerce"
               passHref
-            >
-              <Image
-                className="object-cover h-20 w-full"
-                src="./assets/footerLogo.png"
-                alt="SupabaseEcommerce"
-                passHref
-              />
-            </Link>
+            ></Link>
           </div>
         </div>
       </div>
