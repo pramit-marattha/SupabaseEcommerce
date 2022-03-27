@@ -1262,7 +1262,7 @@ Head over to the `pages/` folder and make a new file called `addProduct.js`.
 ```js
 // addProducts.js
 import Layout from "@/components/Layout";
-import ListingForm from "@/components/ListingForm";
+import ProductList from "@/components/ProductList";
 
 const addProducts = () => {
   const createProduct = () => null;
@@ -1274,7 +1274,7 @@ const addProducts = () => {
           Add your Products
         </h1>
         <div className="mt-8">
-          <ListingForm
+          <ProductList
             buttonText="Add Product"
             redirectPath="/products"
             onSubmit={createProduct}
@@ -1288,10 +1288,10 @@ const addProducts = () => {
 export default addProducts;
 ```
 
-After that head over to the `ListingForm` component and make the following changes to that component.
+After that head over to the `ProductList` component and make the following changes to that component.
 
 ```js
-//components/ListingForm.js
+//components/ProductList.js
 import { useState } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
@@ -1299,9 +1299,9 @@ import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 import { Formik, Form } from "formik";
 import Input from "@/components/Input";
-import ImageUpload from "@/components/ImageUpload";
+import AddProductImage from "@/components/AddProductImage";
 
-const ListingSchema = Yup.object().shape({
+const ProductSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
   description: Yup.string().trim().required(),
   status: Yup.string().trim().required(),
@@ -1311,7 +1311,7 @@ const ListingSchema = Yup.object().shape({
   warranty: Yup.number().positive().integer().min(1).required(),
 });
 
-const ListingForm = ({
+const ProductList = ({
   initialValues = null,
   redirectPath = "",
   buttonText = "Submit",
@@ -1361,7 +1361,7 @@ const ListingForm = ({
     <div>
       <Formik
         initialValues={initialFormValues}
-        validationSchema={ListingSchema}
+        validationSchema={ProductSchema}
         validateOnBlur={false}
         onSubmit={handleOnSubmit}
       >
@@ -1443,7 +1443,7 @@ const ListingForm = ({
         )}
       </Formik>
       <div className="mb-6 max-w-full">
-        <ImageUpload
+        <AddProductImage
           initialImage={{ src: image, alt: initialFormValues.title }}
           onChangePicture={upload}
         />
@@ -1452,7 +1452,7 @@ const ListingForm = ({
   );
 };
 
-ListingForm.propTypes = {
+ProductList.propTypes = {
   initialValues: PropTypes.shape({
     image: PropTypes.string,
     title: PropTypes.string,
@@ -1468,13 +1468,13 @@ ListingForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default ListingForm;
+export default ProductList;
 ```
 
-After that, go to the `ImageUpload` file inside the component folder and copy the following code.
+After that, go to the `AddProductImage` file inside the component folder and copy the following code.
 
 ```js
-// ImageUpload.js
+// AddProductImage.js
 import { useState, useRef } from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
@@ -1482,7 +1482,7 @@ import toast from "react-hot-toast";
 import classNames from "classnames";
 import { CloudUploadIcon } from "@heroicons/react/outline";
 
-const ImageUpload = ({
+const AddProductImage = ({
   label = "Image",
   initialImage = null,
   objectFit = "cover",
@@ -1587,7 +1587,7 @@ const ImageUpload = ({
   );
 };
 
-ImageUpload.propTypes = {
+AddProductImage.propTypes = {
   label: PropTypes.string,
   initialImage: PropTypes.shape({
     src: PropTypes.string,
@@ -1599,7 +1599,7 @@ ImageUpload.propTypes = {
   onChangePicture: PropTypes.func,
 };
 
-export default ImageUpload;
+export default AddProductImage;
 ```
 
 This `addProduct` component renders the entire page's layout, which consist of a form from where you can add the product details and informations.
@@ -1769,7 +1769,7 @@ yarn add axios
 ```js
 //pages/addProducts.js
 import Layout from "@/components/Layout";
-import ListingForm from "@/components/ListingForm";
+import ProductList from "@/components/ProductList";
 
 const addProducts = () => {
   const createProduct = () => (data) => axios.post("/api/products", data);
@@ -1781,7 +1781,7 @@ const addProducts = () => {
           Add your Products
         </h1>
         <div className="mt-8">
-          <ListingForm
+          <ProductList
             buttonText="Add Product"
             redirectPath="/products"
             onSubmit={createProduct}
@@ -2610,7 +2610,7 @@ export const config = {
 };
 ```
 
-After you have added the API endpoint make the following chnages to the `ListingForm`.
+After you have added the API endpoint make the following chnages to the `ProductList`.
 
 ```jsx
 import { useState } from "react";
@@ -2620,10 +2620,10 @@ import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 import { Formik, Form } from "formik";
 import Input from "@/components/Input";
-import ImageUpload from "@/components/ImageUpload";
+import AddProductImage from "@/components/AddProductImage";
 import axios from "axios";
 
-const ListingSchema = Yup.object().shape({
+const ProductSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
   description: Yup.string().trim().required(),
   status: Yup.string().trim().required(),
@@ -2633,7 +2633,7 @@ const ListingSchema = Yup.object().shape({
   warranty: Yup.number().positive().integer().min(1).required(),
 });
 
-const ListingForm = ({
+const ProductList = ({
   initialValues = null,
   redirectPath = "",
   buttonText = "Submit",
@@ -2697,7 +2697,7 @@ const ListingForm = ({
     <div>
       <Formik
         initialValues={initialFormValues}
-        validationSchema={ListingSchema}
+        validationSchema={ProductSchema}
         validateOnBlur={false}
         onSubmit={handleOnSubmit}
       >
@@ -2779,7 +2779,7 @@ const ListingForm = ({
         )}
       </Formik>
       <div className="mb-6 max-w-full">
-        <ImageUpload
+        <AddProductImage
           initialImage={{ src: image, alt: initialFormValues.title }}
           onChangePicture={upload}
         />
@@ -2788,7 +2788,7 @@ const ListingForm = ({
   );
 };
 
-ListingForm.propTypes = {
+ProductList.propTypes = {
   initialValues: PropTypes.shape({
     image: PropTypes.string,
     title: PropTypes.string,
@@ -2804,7 +2804,7 @@ ListingForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default ListingForm;
+export default ProductList;
 ```
 
 Now lets actually test our final application

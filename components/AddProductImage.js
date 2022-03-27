@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import classNames from "classnames";
 import { CloudUploadIcon } from "@heroicons/react/outline";
 
-const ImageUpload = ({
+const AddProductImage = ({
   label = "Image",
   initialImage = null,
   objectFit = "cover",
@@ -110,7 +110,7 @@ const ImageUpload = ({
   );
 };
 
-ImageUpload.propTypes = {
+AddProductImage.propTypes = {
   label: PropTypes.string,
   initialImage: PropTypes.shape({
     src: PropTypes.string,
@@ -122,7 +122,7 @@ ImageUpload.propTypes = {
   onChangePicture: PropTypes.func,
 };
 
-export default ImageUpload;
+export default AddProductImage;
 
 export async function getInitialProps({ req }) {
   const { origin } = absoluteUrl(req, req.headers.host);

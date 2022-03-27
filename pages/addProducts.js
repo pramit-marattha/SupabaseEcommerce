@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import ListingForm from "@/components/ListingForm";
+import ListingForm from "@/components/ProductList";
 import axios from "axios";
 
 const addProducts = () => {

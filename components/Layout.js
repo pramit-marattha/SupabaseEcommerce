@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import PropTypes from "prop-types";
-import LoginModal from "./LoginModal";
+import LoginModal from "./SigninPopupModal";
 import { Menu, Transition } from "@headlessui/react";
 
 import {
