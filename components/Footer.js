@@ -86,21 +86,7 @@ const Footer = () => {
             </li>
           </ul>
 
-          <div className="flex-shrink-0 mr-2">
-            <Link
-              href="/"
-              className="block"
-              aria-label="SuperbaseEcommerce"
-              passHref
-            >
-              <Image
-                className="object-cover h-20 w-full"
-                src="https://user-images.githubusercontent.com/37651620/159121520-fe42bbf1-a2af-4baf-bdd8-7efad8523202.png"
-                alt="SupabaseEcommerce"
-                passHref
-              />
-            </Link>
-          </div>
+          <div className="flex-shrink-0 mr-2"></div>
         </div>
       </div>
     </footer>

@@ -65,11 +65,6 @@ const Layout = ({ children = null }) => {
             <div className="h-full px-5 flex justify-between items-center space-x-5">
               <Link href="/">
                 <a className="flex items-center space-x-1">
-                  <Image
-                    className="shrink-0 w-24 h-24 text-primary"
-                    src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png"
-                    alt="Logo"
-                  />
                   <span className="text-2xl font-semibold tracking-wide text-white">
                     <span className="text-3xl text-success">S</span>upabase
                     <span className="text-3xl text-success">E</span>commerce

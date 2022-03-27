@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import webShopsvg from "./assets/webShop.svg";
+import WebShopsvg from "../public/assets/webShop.svg";
 
 const ShopCards = () => {
   const [tab, setTab] = useState(1);
@@ -46,7 +46,7 @@ const ShopCards = () => {
                   >
                     <Image
                       alt="hero-img"
-                      src={webShopsvg}
+                      src={WebShopsvg}
                       className="mx-auto object-cover shadow rounded-tr-extraLarge rounded-bl-extraLarge w-full h-96 sm:h-112 md:h-120"
                     />
                   </motion.div>
@@ -79,7 +79,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Register/Login Feature
+                      Register/Login Feature (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       User can login and save their products for later purchase.
@@ -100,7 +100,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Add to cart
+                      Add to cart (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       User can add the products/items to their cart
@@ -121,7 +121,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Security
+                      Security (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       Hassle free secure login and registration process.
@@ -142,7 +142,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Personalized shops
+                      Personalized shops (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       User can create/register their very own shop and add their
