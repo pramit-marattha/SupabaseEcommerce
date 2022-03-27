@@ -56,7 +56,7 @@ const Confirm = ({ show = false, email = "" }) => (
   </Transition>
 );
 
-const LoginModal = ({ show = false, onClose = () => null }) => {
+const SigninPopupModal = ({ show = false, onClose = () => null }) => {
   const [disabled, setDisabled] = useState(false);
   const [showConfirm, setConfirm] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
@@ -131,21 +131,14 @@ const LoginModal = ({ show = false, onClose = () => null }) => {
               <div className="py-12">
                 <div className="px-4 sm:px-12">
                   <div className="flex justify-center">
-                    <Link href="/">
-                      <a className="flex items-center space-x-1">
-                        <Image
-                          className="shrink-0 w-24 h-24 text-primary"
-                          src="https://user-images.githubusercontent.com/37651620/158058874-6a86646c-c60e-4c39-bc6a-d81974afe635.png"
-                          alt="Logo"
-                        />
-                        <span className="text-2xl font-semibold tracking-wide text-gray-400">
-                          <span className="text-3xl text-success">S</span>
-                          upabase
-                          <span className="text-3xl text-success">E</span>
-                          commerce
-                        </span>
-                      </a>
-                    </Link>
+                    <a className="flex items-center space-x-1">
+                      <span className="text-2xl font-semibold tracking-wide text-gray-400">
+                        <span className="text-3xl text-success">S</span>
+                        upabase
+                        <span className="text-3xl text-success">E</span>
+                        commerce
+                      </span>
+                    </a>
                   </div>
                   <Dialog.Title
                     as="h3"
@@ -169,9 +162,9 @@ const LoginModal = ({ show = false, onClose = () => null }) => {
   );
 };
 
-LoginModal.propTypes = {
+SigninPopupModal.propTypes = {
   show: PropTypes.bool,
   onClose: PropTypes.func,
 };
 
-export default LoginModal;
+export default SigninPopupModal;

@@ -5,10 +5,10 @@ import * as Yup from "yup";
 import { toast } from "react-hot-toast";
 import { Formik, Form } from "formik";
 import Input from "@/components/Input";
-import ImageUpload from "@/components/ImageUpload";
+import ImageUpload from "@/components/AddProductImage";
 import axios from "axios";
 
-const ListingSchema = Yup.object().shape({
+const ProductSchema = Yup.object().shape({
   title: Yup.string().trim().required(),
   description: Yup.string().trim().required(),
   status: Yup.string().trim().required(),
@@ -18,7 +18,7 @@ const ListingSchema = Yup.object().shape({
   warranty: Yup.number().positive().integer().min(1).required(),
 });
 
-const ListingForm = ({
+const ProductList = ({
   initialValues = null,
   redirectPath = "",
   buttonText = "Submit",
@@ -80,7 +80,7 @@ const ListingForm = ({
     <div>
       <Formik
         initialValues={initialFormValues}
-        validationSchema={ListingSchema}
+        validationSchema={ProductSchema}
         validateOnBlur={false}
         onSubmit={handleOnSubmit}
       >
@@ -171,7 +171,7 @@ const ListingForm = ({
   );
 };
 
-ListingForm.propTypes = {
+ProductList.propTypes = {
   initialValues: PropTypes.shape({
     image: PropTypes.string,
     title: PropTypes.string,
@@ -187,4 +187,4 @@ ListingForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default ListingForm;
+export default ProductList;
