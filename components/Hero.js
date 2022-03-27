@@ -3,7 +3,7 @@ import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Shopsvg from "./assets/shop.svg";
+import Shopsvg from "../public/assets/shop.svg";
 
 const Hero = () => {
   return (
