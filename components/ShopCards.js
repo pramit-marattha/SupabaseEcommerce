@@ -79,7 +79,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Register/Login Feature
+                      Register/Login Feature (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       User can login and save their products for later purchase.
@@ -100,7 +100,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Add to cart
+                      Add to cart (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       User can add the products/items to their cart
@@ -121,7 +121,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Security
+                      Security (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       Hassle free secure login and registration process.
@@ -142,7 +142,7 @@ const ShopCards = () => {
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1 text-gray-600">
-                      Personalized shops
+                      Personalized shops (Coming Soon)
                     </div>
                     <div className="text-gray-600">
                       User can create/register their very own shop and add their
