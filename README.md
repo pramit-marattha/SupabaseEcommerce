@@ -50,7 +50,7 @@ It usually only takes a few minutes to get everything set up. So, for this proje
 
 Your application’s folder structure should look something like this.
 
-![Folder structure](https://user-images.githubusercontent.com/37651620/158068978-ce6f3ba8-1571-46e9-840a-4c9a79f01666.png)
+![Folder structure](https://user-images.githubusercontent.com/37651620/160289553-47f4b441-d15b-4f20-85de-6e255035444a.png)
 
 So you might be curious about the source of the content. Remember that all of our source code is housed in the pages folder, and react/next will inject it into the root div element. Let’s take a look at our pages folder, which contains some javascript files and one API folder.
 
