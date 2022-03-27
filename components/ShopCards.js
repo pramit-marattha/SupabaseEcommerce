@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import WebShopsvg from "./assets/webShop.svg";
+import WebShopsvg from "../public/assets/webShop.svg";
 
 const ShopCards = () => {
   const [tab, setTab] = useState(1);
