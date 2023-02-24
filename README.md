@@ -1,7 +1,3 @@
-<p align="center">
-<img src="https://user-images.githubusercontent.com/37651620/159424112-2faca207-6e1d-42b7-9b2f-b889cb5a693e.png" alt="Supabase Ecommerce logo">
-</p>
-
 We will be building `SuperbaseEcommerce` fullstack application in this article tutorial. This application is simply an online ecommerce shopping site where users can browse all of the products, upload their own products, and even purchase the products(`This functionality will be added in the next series of articles`). It is similar to an Amazon app, but it is simpler because we will not implement any actual payment or shipping procedures. Here's a live demonstration of the final version of the app. This is how your app should look after you finish this tutorial. Feel free to experiment with it to get a sense of all the features we will be implementing.
 
 ### Live Demo => [https://supabase-ecommerce.vercel.app](https://supabase-ecommerce.vercel.app)
