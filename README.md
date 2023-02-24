@@ -13,9 +13,9 @@ We will be building `SuperbaseEcommerce` full-stack application in this tutorial
 
 So, in this tutorial, we'll learn how to build this full-stack app with `Next.js`, the react framework, `NextAuth.js`, for implementing passwordless and OAuth authentication, `Supabase`, for persisting app data into a PostgreSQL database and stashing media files and information, and `Prisma`, for making it simple to read and write data from and to the database from our app.
 
-This article tutorial covers many topics and technical concepts necessary to build a modern full-stack app, even if this app is a simplified version of a more advanced ecommerce site like Amazon. You should be able to use all of the technologies covered in this tutorial, including react, nextjs, prisma, supabase, and others, but most importantly, you should be able to build any full-stack app using those technologies. You'll go at your own speed and intensity, with us guiding you along the way. After completing this guide, the goal of this article is to provide you with the tools and techniques you'll need to build a similar app on your own.To put it another way, this tutorial will not only teach you how to use those technologies in great detail, but it will also provide you with the proper mixture of principles and application to help you grasp all of the key concepts so that you can proudly build your own apps from scratch later part on this article.
+This tutorial covers many topics and technical concepts necessary to build a modern full-stack app, even if this app is a simplified version of a more advanced ecommerce site like Amazon. You should be able to use all of the technologies covered in this tutorial, including react, nextjs, prisma, supabase, and others, but most importantly, you should be able to build any full-stack app using those technologies. You'll go at your own speed and intensity, with us guiding you along the way. After completing this guide, the goal of this tutorial is to provide you with the tools and techniques you'll need to build a similar app on your own.To put it another way, this tutorial will not only teach you how to use those technologies in great detail, but it will also provide you with the proper mixture of principles and application to help you grasp all of the key concepts so that you can proudly build your own apps from scratch later part on this tutorial.
 
-Let's start with the react portion and build our application. The first step is to install Node.js if it isn't already on your computer. So, go to the official Node.js website and download the most recent version. Node js is required to use the node package manager, abbreviated as npm. Now launch your preferred code editor and navigate to the folder. For this article tutorial, we'll be using the VScode code editor.
+Let's start with the react portion and build our application. The first step is to install Node.js if it isn't already on your computer. So, go to the official Node.js website and download the most recent version. Node js is required to use the node package manager, abbreviated as npm. Now launch your preferred code editor and navigate to the folder. For this tutorial, we'll be using the VScode code editor.
 
 ### Setting up SupabaseEcommerce project.
 
@@ -848,7 +848,7 @@ Each field, as shown in our Product model, has at least a name and its type. To 
 
 #### Generate Prisma Client
 
-After designning Prisma model, we can begin generating our Prisma Client. We'll need to use Prisma's JavaScript library later in the article to interact with our data from within our `Next.js` app without having to write all of the SQL queries ourselves. But there's more to it. Prisma Client is, in fact, an auto-generated type-safe API designed specifically for our application which will gives us the JavaScript code we need to run queries on our data.
+After designning Prisma model, we can begin generating our Prisma Client. We'll need to use Prisma's JavaScript library later in the tutorial to interact with our data from within our `Next.js` app without having to write all of the SQL queries ourselves. But there's more to it. Prisma Client is, in fact, an auto-generated type-safe API designed specifically for our application which will gives us the JavaScript code we need to run queries on our data.
 
 - **Step 1**: Installing prisma client
 
@@ -921,7 +921,7 @@ OR,
 npx prisma migrate dev
 ```
 
-This method (`npx prisma migrate dev`) will be used in this article because it is very useful in that it allows us to directly sync our Prisma schema with our database while also allowing us to easily track the changes that we make.
+This method (`npx prisma migrate dev`) will be used in this tutorial because it is very useful in that it allows us to directly sync our Prisma schema with our database while also allowing us to easily track the changes that we make.
 
 So, to begin using Prisma Migrate, enter the following command into the command prompt and after that enter a name for this first migration when prompted.
 
@@ -3001,9 +3001,7 @@ Yayyy!! 🎉 🎉 Its deployed on Netlify!
 
 # Conclusion
 
-Congratulations 🎉 🎉!!. You've successfully created a fullstack application with Next.js, Supabase, Prisma and chatwoot.This article may have been entertaining as well as instructive in terms of creating a fully fgledged working ecommerce site from absolute scratch.
-
-Aviyel is a collaborative platform that assists open source project communities in monetizing and long-term sustainability. To know more visit Aviyel.com and find great blogs and events, just like this one! Sign up now for early access, and don't forget to follow us on our socials
+Congratulations 🎉 🎉!!. You've successfully created a fullstack application with Next.js, Supabase, Prisma and chatwoot.I hope this tutorial may have been entertaining as well as instructive in terms of creating a fully fgledged working ecommerce site from absolute scratch.
 
 # Refrences
 
